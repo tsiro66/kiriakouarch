@@ -1,0 +1,32 @@
+---
+import { Font } from "astro:assets";
+import Navbar from "../components/ui/Navbar.astro";
+import Footer from "../components/ui/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  lang?: string;
+}
+
+const { title, lang = "en" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <Font cssVariable="--font-roboto-mono" />
+  </head>
+  <body class="pt-16">
+    <div id="content-wrapper" class="relative z-10 bg-zinc-50">
+      <Navbar />
+      <main>
+        <slot />
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>

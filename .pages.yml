@@ -1,0 +1,86 @@
+media:
+  input: src/assets
+  output: /src/assets
+
+content:
+  - name: pages-el
+    label: Pages (GR)
+    type: collection
+    path: src/content/pages/el
+    format: yaml-frontmatter
+    filename: "{fields.slug}"
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: slug
+        label: Slug
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+      - name: body
+        label: Content
+        type: rich-text
+
+  - name: pages-en
+    label: Pages (EN)
+    type: collection
+    path: src/content/pages/en
+    format: yaml-frontmatter
+    filename: "{fields.slug}"
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: slug
+        label: Slug
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+      - name: body
+        label: Content
+        type: rich-text
+
+  - name: projects
+    label: Projects
+    type: collection
+    path: src/content/projects
+    format: yaml-frontmatter
+    filename: "{fields.slug}"
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: slug
+        label: Slug
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+      - name: image
+        label: Cover Image
+        type: image
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: lang
+        label: Language
+        type: select
+        options:
+          - label: Greek
+            value: el
+          - label: English
+            value: en
+        required: true
+      - name: body
+        label: Content
+        type: rich-text

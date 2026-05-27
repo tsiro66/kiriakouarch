@@ -1,0 +1,72 @@
+---
+import { t, getLocaleFromUrl } from "../../i18n";
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = locale === "el" ? "" : `/${locale}`;
+const otherLocale = locale === "el" ? "en" : "el";
+const otherPrefix = otherLocale === "el" ? "" : `/${otherLocale}`;
+const currentPath = Astro.url.pathname.replace(/^\/(en|el)/, "");
+---
+
+<nav class="fixed top-0 left-0 w-full z-50 bg-zinc-50">
+  <div class=" mx-auto px-6 flex items-center justify-between h-22">
+    <a href={`${prefix}/`} class="text-5xl font-bold tracking-tight text-zinc-900">
+      K
+    </a>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      aria-label={t(locale, "nav", "menu")}
+      aria-expanded="false"
+      class="flex flex-col justify-center items-center gap-1.5 w-10 h-10 cursor-pointer"
+    >
+      <span class="block w-10 h-0.5 bg-zinc-900 transition-transform duration-300 origin-center" id="line-1"></span>
+      <span class="block w-10 h-0.5 bg-zinc-900 transition-transform duration-300 origin-center" id="line-2"></span>
+    </button>
+  </div>
+
+</nav>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 hidden flex-col items-center justify-center gap-8 bg-zinc-50"
+>
+  <a href={`${prefix}/`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600">{t(locale, "nav", "home")}</a>
+  <a href={`${prefix}/about`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600">{t(locale, "nav", "about")}</a>
+  <a href={`${prefix}/projects`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600">{t(locale, "nav", "projects")}</a>
+  <a href={`${prefix}/services`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600">{t(locale, "nav", "services")}</a>
+  <a href={`${prefix}/contact`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600">{t(locale, "nav", "contact")}</a>
+
+  <div class="flex gap-4 mt-4 text-lg md:text-2xl">
+    <span class={locale === "el" ? "font-bold text-zinc-900" : "text-zinc-400"}>
+      {locale === "el" ? "GR" : <a href={`${otherPrefix}${currentPath}`} class="hover:text-zinc-600">GR</a>}
+    </span>
+    <span class="text-zinc-300">|</span>
+    <span class={locale === "en" ? "font-bold text-zinc-900" : "text-zinc-400"}>
+      {locale === "en" ? "EN" : <a href={`${otherPrefix}${currentPath}`} class="hover:text-zinc-600">EN</a>}
+    </span>
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById("menu-toggle")!;
+  const menu = document.getElementById("mobile-menu")!;
+  const line1 = document.getElementById("line-1")!;
+  const line2 = document.getElementById("line-2")!;
+
+  toggle.addEventListener("click", () => {
+    const open = menu.classList.toggle("hidden");
+    const isOpen = !open;
+    menu.classList.toggle("flex", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+
+    if (isOpen) {
+      line1.style.transform = "translateY(4px) rotate(45deg)";
+      line2.style.transform = "translateY(-4px) rotate(-45deg)";
+    } else {
+      line1.style.transform = "";
+      line2.style.transform = "";
+    }
+  });
+</script>
