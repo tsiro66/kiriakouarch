@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import { t, getLocaleFromUrl } from "../../i18n";
+import ProjectCard from "./ProjectCard.astro";
+
+const locale = getLocaleFromUrl(Astro.url);
+const allProjects = await getCollection("projects", ({ data }) => data.lang === locale && data.featured);
+const projects = allProjects.sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+const allLink = locale === "el" ? "/projects" : "/en/projects";
+---
+
+<section class="px-6 py-24 md:py-32">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-zinc-900">
+        {locale === "el" ? "Έργα" : "Projects"}
+      </h2>
+      <a href={allLink} class="text-sm tracking-widest uppercase text-zinc-500 hover:text-zinc-900 hover:underline transition-colors">
+        {locale === "el" ? "Όλα τα έργα" : "All projects"} &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          slug={project.data.slug}
+          description={project.data.description}
+          thumbnail={project.data.thumbnail}
+          tags={project.data.tags}
+          year={project.data.year}
+          location={project.data.location}
+          lang={locale}
+        />
+      ))}
+    </div>
+  </div>
+</section>

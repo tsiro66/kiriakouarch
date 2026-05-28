@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import { getLocaleFromUrl } from "../../i18n";
+import ProjectCard from "./ProjectCard.astro";
+
+const locale = getLocaleFromUrl(Astro.url);
+const allProjects = await getCollection("projects", ({ data }) => data.lang === locale);
+const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="px-6 py-24 md:py-32 bg-zinc-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+      {
+        projects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            slug={project.data.slug}
+            description={project.data.description}
+            thumbnail={project.data.thumbnail}
+            tags={project.data.tags}
+            year={project.data.year}
+            location={project.data.location}
+            lang={locale}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

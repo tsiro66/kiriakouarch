@@ -10,23 +10,57 @@ interface Props {
 }
 
 const { title, lang = "en" } = Astro.props;
+const hasHero = Astro.slots.has("hero");
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} data-has-hero={hasHero ? "true" : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <Font cssVariable="--font-roboto-mono" />
   </head>
-  <body class="pt-16">
-    <div id="content-wrapper" class="relative z-10 bg-zinc-50">
-      <Navbar />
-      <main>
+  <body>
+    <Navbar />
+    {hasHero && <slot name="hero" />}
+    <div id="content-wrapper" class="relative z-10 pointer-events-none">
+      {hasHero && <div id="hero-spacer"></div>}
+      <main class:list={["bg-zinc-50 pointer-events-auto", { "pt-22": !hasHero }]}>
         <slot />
       </main>
     </div>
     <Footer />
+
+    {hasHero && (
+      <script>
+        const hero = document.getElementById("hero");
+        const spacer = document.getElementById("hero-spacer");
+        const footer = document.getElementById("site-footer");
+        const wrapper = document.getElementById("content-wrapper");
+
+        function setHeroSpacer() {
+          if (hero && spacer) {
+            spacer.style.height = `${hero.offsetHeight}px`;
+          }
+        }
+
+        function updateHeroZ() {
+          if (!hero || !footer || !wrapper) return;
+          const scrollBottom = window.scrollY + window.innerHeight;
+          const footerRevealPoint = wrapper.offsetTop + wrapper.offsetHeight;
+          if (scrollBottom > footerRevealPoint) {
+            hero.style.zIndex = "-1";
+          } else {
+            hero.style.zIndex = "";
+          }
+        }
+
+        setHeroSpacer();
+        updateHeroZ();
+        window.addEventListener("resize", setHeroSpacer);
+        window.addEventListener("scroll", updateHeroZ);
+      </script>
+    )}
   </body>
 </html>

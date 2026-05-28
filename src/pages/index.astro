@@ -1,8 +1,18 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Hero from "../components/sections/Hero.astro";
+import Intro from "../components/sections/Intro.astro";
+import HomeProjects from "../components/sections/HomeProjects.astro";
+import HomeServices from "../components/sections/HomeServices.astro";
+import HomeAbout from "../components/sections/HomeAbout.astro";
+import HomeContact from "../components/sections/HomeContact.astro";
 ---
 
 <MainLayout title="Αρχική | Kiriakouarch" lang="el">
-  <Hero />
+  <Hero slot="hero" />
+  <Intro />
+  <HomeProjects />
+  <HomeServices />
+  <HomeAbout />
+  <HomeContact />
 </MainLayout>

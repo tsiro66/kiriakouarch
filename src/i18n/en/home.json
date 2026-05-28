@@ -1,5 +1,9 @@
 {
-  "tags": ["Residential", "Commercial", "Renovations", "Interior Design", "Urban Planning"],
-  "heroAlt": "Architecture project by Kiriakouarch",
-  "heroTitle": "Kiriakou Architects"
+  "tags": ["Residential", "Apartment Buildings", "Commercial", "Hotels", "Renovations"],
+  "heroAlt": "Architectural project by Kyriakou Studio",
+  "heroTitle": "Residence in Patras",
+  "heroSlug": "katoikia-patron",
+  "address": "Patras",
+  "introTitle": "Architecture studio in Patras since 1975",
+  "introText": "Giannis & Elina Kyriakou Architecture Studio, founded in Patras in 1975. We undertake the design, supervision and construction of buildings — residences, apartment buildings, commercial spaces, hotels — with applications in bioclimatic architecture and solar design."
 }

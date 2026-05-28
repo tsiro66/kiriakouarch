@@ -1,0 +1,37 @@
+---
+import { t, getLocaleFromUrl } from "../../i18n";
+
+const locale = getLocaleFromUrl(Astro.url);
+const contactLink = locale === "el" ? "/contact" : "/en/contact";
+---
+
+<section class="px-6 py-24 md:py-32 bg-zinc-900 text-white">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold leading-tight max-w-2xl mb-12">
+      {t(locale, "contact", "intro")}
+    </h2>
+
+    <div class="flex flex-col md:flex-row gap-12 md:gap-24 mb-16">
+      <div>
+        <span class="text-xs tracking-widest uppercase text-zinc-500">{t(locale, "contact", "addressLabel")}</span>
+        <p class="text-base text-zinc-300 mt-1">{t(locale, "contact", "address")}</p>
+      </div>
+      <div>
+        <span class="text-xs tracking-widest uppercase text-zinc-500">{t(locale, "contact", "phoneLabel")}</span>
+        <p class="text-base mt-1">
+          <a href="tel:+302610321146" class="text-zinc-300 hover:text-white hover:underline transition-colors">{t(locale, "contact", "phone")}</a>
+        </p>
+      </div>
+      <div>
+        <span class="text-xs tracking-widest uppercase text-zinc-500">{t(locale, "contact", "emailLabel")}</span>
+        <p class="text-base mt-1">
+          <a href={`mailto:${t(locale, "contact", "email")}`} class="text-zinc-300 hover:text-white hover:underline transition-colors">{t(locale, "contact", "email")}</a>
+        </p>
+      </div>
+    </div>
+
+    <a href={contactLink} class="inline-block border border-white px-8 py-4 text-sm tracking-widest uppercase hover:bg-white hover:text-zinc-900 transition-colors">
+      {locale === "el" ? "Επικοινωνία" : "Get in touch"}
+    </a>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+---
+import { t, getLocaleFromUrl } from "../../i18n";
+
+import enServices from "../../i18n/en/services.json";
+import elServices from "../../i18n/el/services.json";
+
+const locale = getLocaleFromUrl(Astro.url);
+const items = locale === "el" ? elServices.items : enServices.items;
+const servicesLink = locale === "el" ? "/services" : "/en/services";
+---
+
+<section class="px-6 py-24 md:py-32 bg-zinc-900 text-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold">
+        {t(locale, "services", "title")}
+      </h2>
+      <a href={servicesLink} class="text-sm tracking-widest uppercase text-zinc-400 hover:text-white hover:underline transition-colors">
+        {locale === "el" ? "Περισσότερα" : "Learn more"} &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-700">
+      {items.map((item, i) => (
+        <div class="bg-zinc-900 p-8">
+          <span class="text-sm text-zinc-500 font-mono">0{i + 1}</span>
+          <h3 class="text-lg font-bold mt-3 mb-3">{item.name}</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
