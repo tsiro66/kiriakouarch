@@ -4,9 +4,10 @@ media:
 
 content:
 
-  # ── Projects (EN) ─────────────────────────────────────────────────────────
+  # ── EN ────────────────────────────────────────────────────────────────────
   - name: projects-en
-    label: "Projects (EN)"
+    label: "Projects"
+    group: "EN"
     type: collection
     path: src/content/projects/en
     format: frontmatter
@@ -31,9 +32,102 @@ content:
       - { name: order,    label: Order,    type: number,  default: 0 }
       - { name: body,     label: Content,  type: rich-text }
 
-  # ── Projects (EL) ─────────────────────────────────────────────────────────
+  - name: nav-en
+    label: "Navigation"
+    group: "EN"
+    type: file
+    path: src/i18n/en/nav.json
+    fields:
+      - { name: home,     label: Home,     type: string }
+      - { name: about,    label: About,    type: string }
+      - { name: projects, label: Projects, type: string }
+      - { name: services, label: Services, type: string }
+      - { name: contact,  label: Contact,  type: string }
+      - { name: menu,     label: Menu,     type: string }
+
+  - name: home-en
+    label: "Home"
+    group: "EN"
+    type: file
+    path: src/i18n/en/home.json
+    fields:
+      - { name: heroTitle,  label: "Hero Title",  type: string }
+      - { name: heroAlt,    label: "Hero Alt",    type: string }
+      - { name: heroSlug,   label: "Hero Slug",   type: string }
+      - { name: address,    label: Address,       type: string }
+      - { name: introTitle, label: "Intro Title", type: string }
+      - { name: introText,  label: "Intro Text",  type: text }
+      - name: tags
+        label: "Project Tags"
+        type: string
+        list: true
+
+  - name: about-en
+    label: "About"
+    group: "EN"
+    type: file
+    path: src/i18n/en/about.json
+    fields:
+      - { name: title,           label: Title,           type: string }
+      - { name: intro,           label: Intro,           type: text }
+      - { name: philosophyTitle, label: "Person 1 Name", type: string }
+      - { name: philosophyText,  label: "Person 1 Bio",  type: text }
+      - { name: experienceTitle, label: "Person 2 Name", type: string }
+      - { name: experienceText,  label: "Person 2 Bio",  type: text }
+      - { name: ctaText,         label: "CTA Text",      type: string }
+      - { name: ctaLink,         label: "CTA Link",      type: string }
+
+  - name: services-en
+    label: "Services"
+    group: "EN"
+    type: file
+    path: src/i18n/en/services.json
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: intro, label: Intro, type: text }
+      - name: items
+        label: "Service Items"
+        type: object
+        list: true
+        fields:
+          - { name: name,        label: Name,        type: string }
+          - { name: description, label: Description, type: text }
+
+  - name: contact-en
+    label: "Contact"
+    group: "EN"
+    type: file
+    path: src/i18n/en/contact.json
+    fields:
+      - { name: title,        label: Title,          type: string }
+      - { name: intro,        label: Intro,          type: text }
+      - { name: addressLabel, label: "Address Label", type: string }
+      - { name: address,      label: Address,         type: string }
+      - { name: phoneLabel,   label: "Phone Label",   type: string }
+      - { name: phone,        label: Phone,           type: string }
+      - { name: emailLabel,   label: "Email Label",   type: string }
+      - { name: email,        label: Email,           type: string }
+      - { name: hoursLabel,   label: "Hours Label",   type: string }
+      - { name: hours,        label: Hours,           type: string }
+
+  - name: footer-en
+    label: "Footer"
+    group: "EN"
+    type: file
+    path: src/i18n/en/footer.json
+    fields:
+      - { name: rights,       label: Rights,          type: string }
+      - { name: addressLabel, label: "Address Label",  type: string }
+      - { name: address,      label: Address,          type: string }
+      - { name: phoneLabel,   label: "Phone Label",    type: string }
+      - { name: phone,        label: Phone,            type: string }
+      - { name: emailLabel,   label: "Email Label",    type: string }
+      - { name: email,        label: Email,            type: string }
+
+  # ── EL ────────────────────────────────────────────────────────────────────
   - name: projects-el
-    label: "Projects (EL)"
+    label: "Projects"
+    group: "EL"
     type: collection
     path: src/content/projects/el
     format: frontmatter
@@ -58,22 +152,9 @@ content:
       - { name: order,    label: Order,    type: number,  default: 0 }
       - { name: body,     label: Content,  type: rich-text }
 
-  # ── Navigation (EN) ───────────────────────────────────────────────────────
-  - name: nav-en
-    label: "Navigation (EN)"
-    type: file
-    path: src/i18n/en/nav.json
-    fields:
-      - { name: home,     label: Home,     type: string }
-      - { name: about,    label: About,    type: string }
-      - { name: projects, label: Projects, type: string }
-      - { name: services, label: Services, type: string }
-      - { name: contact,  label: Contact,  type: string }
-      - { name: menu,     label: Menu,     type: string }
-
-  # ── Navigation (EL) ───────────────────────────────────────────────────────
   - name: nav-el
-    label: "Navigation (EL)"
+    label: "Navigation"
+    group: "EL"
     type: file
     path: src/i18n/el/nav.json
     fields:
@@ -84,26 +165,9 @@ content:
       - { name: contact,  label: Contact,  type: string }
       - { name: menu,     label: Menu,     type: string }
 
-  # ── Home (EN) ─────────────────────────────────────────────────────────────
-  - name: home-en
-    label: "Home (EN)"
-    type: file
-    path: src/i18n/en/home.json
-    fields:
-      - { name: heroTitle,  label: "Hero Title",  type: string }
-      - { name: heroAlt,    label: "Hero Alt",    type: string }
-      - { name: heroSlug,   label: "Hero Slug",   type: string }
-      - { name: address,    label: Address,       type: string }
-      - { name: introTitle, label: "Intro Title", type: string }
-      - { name: introText,  label: "Intro Text",  type: text }
-      - name: tags
-        label: "Project Tags"
-        type: string
-        list: true
-
-  # ── Home (EL) ─────────────────────────────────────────────────────────────
   - name: home-el
-    label: "Home (EL)"
+    label: "Home"
+    group: "EL"
     type: file
     path: src/i18n/el/home.json
     fields:
@@ -118,29 +182,14 @@ content:
         type: string
         list: true
 
-  # ── About (EN) ────────────────────────────────────────────────────────────
-  - name: about-en
-    label: "About (EN)"
-    type: file
-    path: src/i18n/en/about.json
-    fields:
-      - { name: title,           label: Title,          type: string }
-      - { name: intro,           label: Intro,          type: text }
-      - { name: philosophyTitle, label: "Person 1 Name", type: string }
-      - { name: philosophyText,  label: "Person 1 Bio",  type: text }
-      - { name: experienceTitle, label: "Person 2 Name", type: string }
-      - { name: experienceText,  label: "Person 2 Bio",  type: text }
-      - { name: ctaText,         label: "CTA Text",      type: string }
-      - { name: ctaLink,         label: "CTA Link",      type: string }
-
-  # ── About (EL) ────────────────────────────────────────────────────────────
   - name: about-el
-    label: "About (EL)"
+    label: "About"
+    group: "EL"
     type: file
     path: src/i18n/el/about.json
     fields:
-      - { name: title,           label: Title,          type: string }
-      - { name: intro,           label: Intro,          type: text }
+      - { name: title,           label: Title,           type: string }
+      - { name: intro,           label: Intro,           type: text }
       - { name: philosophyTitle, label: "Person 1 Name", type: string }
       - { name: philosophyText,  label: "Person 1 Bio",  type: text }
       - { name: experienceTitle, label: "Person 2 Name", type: string }
@@ -148,25 +197,9 @@ content:
       - { name: ctaText,         label: "CTA Text",      type: string }
       - { name: ctaLink,         label: "CTA Link",      type: string }
 
-  # ── Services (EN) ─────────────────────────────────────────────────────────
-  - name: services-en
-    label: "Services (EN)"
-    type: file
-    path: src/i18n/en/services.json
-    fields:
-      - { name: title, label: Title, type: string }
-      - { name: intro, label: Intro, type: text }
-      - name: items
-        label: "Service Items"
-        type: object
-        list: true
-        fields:
-          - { name: name,        label: Name,        type: string }
-          - { name: description, label: Description, type: text }
-
-  # ── Services (EL) ─────────────────────────────────────────────────────────
   - name: services-el
-    label: "Services (EL)"
+    label: "Services"
+    group: "EL"
     type: file
     path: src/i18n/el/services.json
     fields:
@@ -180,31 +213,14 @@ content:
           - { name: name,        label: Name,        type: string }
           - { name: description, label: Description, type: text }
 
-  # ── Contact (EN) ──────────────────────────────────────────────────────────
-  - name: contact-en
-    label: "Contact (EN)"
-    type: file
-    path: src/i18n/en/contact.json
-    fields:
-      - { name: title,        label: Title,         type: string }
-      - { name: intro,        label: Intro,         type: text }
-      - { name: addressLabel, label: "Address Label", type: string }
-      - { name: address,      label: Address,         type: string }
-      - { name: phoneLabel,   label: "Phone Label",   type: string }
-      - { name: phone,        label: Phone,           type: string }
-      - { name: emailLabel,   label: "Email Label",   type: string }
-      - { name: email,        label: Email,           type: string }
-      - { name: hoursLabel,   label: "Hours Label",   type: string }
-      - { name: hours,        label: Hours,           type: string }
-
-  # ── Contact (EL) ──────────────────────────────────────────────────────────
   - name: contact-el
-    label: "Contact (EL)"
+    label: "Contact"
+    group: "EL"
     type: file
     path: src/i18n/el/contact.json
     fields:
-      - { name: title,        label: Title,         type: string }
-      - { name: intro,        label: Intro,         type: text }
+      - { name: title,        label: Title,          type: string }
+      - { name: intro,        label: Intro,          type: text }
       - { name: addressLabel, label: "Address Label", type: string }
       - { name: address,      label: Address,         type: string }
       - { name: phoneLabel,   label: "Phone Label",   type: string }
@@ -214,23 +230,9 @@ content:
       - { name: hoursLabel,   label: "Hours Label",   type: string }
       - { name: hours,        label: Hours,           type: string }
 
-  # ── Footer (EN) ───────────────────────────────────────────────────────────
-  - name: footer-en
-    label: "Footer (EN)"
-    type: file
-    path: src/i18n/en/footer.json
-    fields:
-      - { name: rights,       label: Rights,          type: string }
-      - { name: addressLabel, label: "Address Label",  type: string }
-      - { name: address,      label: Address,          type: string }
-      - { name: phoneLabel,   label: "Phone Label",    type: string }
-      - { name: phone,        label: Phone,            type: string }
-      - { name: emailLabel,   label: "Email Label",    type: string }
-      - { name: email,        label: Email,            type: string }
-
-  # ── Footer (EL) ───────────────────────────────────────────────────────────
   - name: footer-el
-    label: "Footer (EL)"
+    label: "Footer"
+    group: "EL"
     type: file
     path: src/i18n/el/footer.json
     fields:
