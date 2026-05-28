@@ -10,7 +10,7 @@ content:
     group: "EN"
     type: collection
     path: src/content/projects/en
-    format: frontmatter
+    format: yaml-frontmatter
     filename: "{fields.slug}"
     fields:
       - { name: title,       label: Title,       type: string,  required: true }
@@ -130,7 +130,7 @@ content:
     group: "EL"
     type: collection
     path: src/content/projects/el
-    format: frontmatter
+    format: yaml-frontmatter
     filename: "{fields.slug}"
     fields:
       - { name: title,       label: Title,       type: string,  required: true }
