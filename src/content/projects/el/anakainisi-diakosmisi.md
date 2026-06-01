@@ -1,6 +1,5 @@
 ---
 title: "Ανακαίνιση Διαμερίσματος"
-slug: "anakainisi-diakosmisi"
 lang: "el"
 description: "Ολική ανακαίνιση και εσωτερική διακόσμηση διαμερίσματος."
 thumbnail: "../../../assets/projects/project-03.jpg"

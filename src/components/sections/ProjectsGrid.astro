@@ -15,7 +15,7 @@ const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
         projects.map((project) => (
           <ProjectCard
             title={project.data.title}
-            slug={project.data.slug}
+            slug={project.id.split("/")[1]}
             description={project.data.description}
             thumbnail={project.data.thumbnail}
             tags={project.data.tags}

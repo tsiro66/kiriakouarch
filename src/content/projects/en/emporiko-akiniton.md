@@ -1,6 +1,5 @@
 ---
 title: "Commercial Building"
-slug: "emporiko-akiniton"
 lang: "en"
 description: "Design of a commercial building in downtown Patras."
 thumbnail: "../../../assets/projects/project-02.jpg"

@@ -1,6 +1,5 @@
 ---
 title: "Εμπορικό Κτίριο"
-slug: "emporiko-akiniton"
 lang: "el"
 description: "Σχεδιασμός εμπορικού κτιρίου στο κέντρο της Πάτρας."
 thumbnail: "../../../assets/projects/project-02.jpg"

@@ -12,8 +12,7 @@ interface Props {
   lang: string;
 }
 
-const { title, slug, description, thumbnail, tags, year, location, lang } =
-  Astro.props;
+const { title, slug, description, thumbnail, tags, year, location, lang } = Astro.props;
 const href = lang === "el" ? `/projects/${slug}` : `/en/projects/${slug}`;
 ---
 

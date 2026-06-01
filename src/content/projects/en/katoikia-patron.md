@@ -1,6 +1,5 @@
 ---
 title: "Residence in Patras"
-slug: "katoikia-patron"
 lang: "en"
 description: "Modern single-family home with bioclimatic design in Patras."
 thumbnail: "../../../assets/projects/project-01.jpg"

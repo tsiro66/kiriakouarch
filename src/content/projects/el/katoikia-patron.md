@@ -1,6 +1,5 @@
 ---
 title: "Κατοικία στην Πάτρα"
-slug: "katoikia-patron"
 lang: "el"
 description: "Σύγχρονη μονοκατοικία με βιοκλιματικό σχεδιασμό στην Πάτρα."
 thumbnail: "../../../assets/projects/project-01.jpg"

@@ -10,7 +10,6 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      slug: z.string(),
       lang: z.enum(["el", "en"]),
       description: z.string(),
       thumbnail: image(),

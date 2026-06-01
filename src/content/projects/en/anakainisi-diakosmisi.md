@@ -1,6 +1,5 @@
 ---
 title: "Apartment Renovation"
-slug: "anakainisi-diakosmisi"
 lang: "en"
 description: "Complete renovation and interior design of an apartment."
 thumbnail: "../../../assets/projects/project-03.jpg"
