@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astro-tailwind-i18n-template.example.com',
+  site: 'https://kiriakouarch.pages.dev',
   output: 'static',
   i18n: {
     defaultLocale: 'el',
