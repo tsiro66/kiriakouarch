@@ -84,32 +84,18 @@ content:
     type: file
     path: src/i18n/en/home.json
     fields:
-      - { name: heroTitle,  label: "Hero Title",  type: string }
-      - { name: heroAlt,    label: "Hero Alt",    type: string }
-      - { name: heroSlug,   label: "Hero Slug",   type: string }
-      - { name: address,    label: Address,       type: string }
+      - { name: heroAlt,    label: "Hero Image Alt Text", type: string }
       - { name: introTitle, label: "Intro Title", type: string }
       - { name: introText,  label: "Intro Text",  type: text }
-      - name: tags
-        label: "Project Tags"
-        type: string
-        list: true
 
   - name: home-el
     label: "Home (EL)"
     type: file
     path: src/i18n/el/home.json
     fields:
-      - { name: heroTitle,  label: "Hero Title",  type: string }
-      - { name: heroAlt,    label: "Hero Alt",    type: string }
-      - { name: heroSlug,   label: "Hero Slug",   type: string }
-      - { name: address,    label: Address,       type: string }
+      - { name: heroAlt,    label: "Hero Image Alt Text", type: string }
       - { name: introTitle, label: "Intro Title", type: string }
       - { name: introText,  label: "Intro Text",  type: text }
-      - name: tags
-        label: "Project Tags"
-        type: string
-        list: true
 
   # ── About ─────────────────────────────────────────────────────────────────
   - name: about-en
@@ -124,7 +110,6 @@ content:
       - { name: experienceTitle, label: "Person 2 Name", type: string }
       - { name: experienceText,  label: "Person 2 Bio",  type: text }
       - { name: ctaText,         label: "CTA Text",      type: string }
-      - { name: ctaLink,         label: "CTA Link",      type: string }
 
   - name: about-el
     label: "About (EL)"
@@ -138,7 +123,6 @@ content:
       - { name: experienceTitle, label: "Person 2 Name", type: string }
       - { name: experienceText,  label: "Person 2 Bio",  type: text }
       - { name: ctaText,         label: "CTA Text",      type: string }
-      - { name: ctaLink,         label: "CTA Link",      type: string }
 
   # ── Services ──────────────────────────────────────────────────────────────
   - name: services-en
