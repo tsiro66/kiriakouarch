@@ -1,8 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import { t, getLocaleFromUrl } from "../../i18n";
+import heroImg from "../../assets/hero-img.jpg";
+
+import enAbout from "../../i18n/en/about.json";
+import elAbout from "../../i18n/el/about.json";
 
 const locale = getLocaleFromUrl(Astro.url);
 const ctaLink = locale === "el" ? "/projects" : "/en/projects";
+const milestones = locale === "el" ? elAbout.milestones : enAbout.milestones;
 ---
 
 <section class="px-6 py-24 md:py-32 bg-zinc-50 min-h-screen">
@@ -14,22 +20,52 @@ const ctaLink = locale === "el" ? "/projects" : "/en/projects";
       {t(locale, "about", "intro")}
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+    <div class="mb-24">
+      <Image
+        src={heroImg}
+        alt={t(locale, "about", "heroAlt")}
+        class="w-full h-[400px] md:h-[560px] object-cover"
+        widths={[640, 1024, 1440, 1920]}
+        sizes="100vw"
+      />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
       <div>
-        <h2 class="text-xl font-bold text-zinc-900 mb-3">
+        <h2 class="text-xl font-bold text-zinc-900 mb-1">
           {t(locale, "about", "philosophyTitle")}
         </h2>
-        <p class="text-base text-zinc-600 leading-relaxed">
+        <span class="text-sm tracking-widest uppercase text-zinc-400">
+          {t(locale, "about", "philosophyRole")}
+        </span>
+        <p class="text-base text-zinc-600 leading-relaxed mt-4">
           {t(locale, "about", "philosophyText")}
         </p>
       </div>
       <div>
-        <h2 class="text-xl font-bold text-zinc-900 mb-3">
+        <h2 class="text-xl font-bold text-zinc-900 mb-1">
           {t(locale, "about", "experienceTitle")}
         </h2>
-        <p class="text-base text-zinc-600 leading-relaxed">
+        <span class="text-sm tracking-widest uppercase text-zinc-400">
+          {t(locale, "about", "experienceRole")}
+        </span>
+        <p class="text-base text-zinc-600 leading-relaxed mt-4">
           {t(locale, "about", "experienceText")}
         </p>
+      </div>
+    </div>
+
+    <div class="mb-16">
+      <span class="text-sm tracking-widest uppercase text-zinc-400">
+        {t(locale, "about", "milestonesTitle")}
+      </span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 mt-8">
+        {milestones.map((m) => (
+          <div class="flex gap-6 border-t border-zinc-200 pt-4">
+            <span class="text-sm font-bold text-zinc-900 shrink-0">{m.year}</span>
+            <p class="text-sm text-zinc-500">{m.text}</p>
+          </div>
+        ))}
       </div>
     </div>
 

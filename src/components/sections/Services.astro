@@ -6,6 +6,7 @@ const locale = getLocaleFromUrl(Astro.url);
 import enServices from "../../i18n/en/services.json";
 import elServices from "../../i18n/el/services.json";
 const items = locale === "el" ? elServices.items : enServices.items;
+const ctaLink = locale === "el" ? "/contact" : "/en/contact";
 ---
 
 <section class="px-6 py-24 md:py-32 bg-zinc-50 min-h-screen">
@@ -18,12 +19,19 @@ const items = locale === "el" ? elServices.items : enServices.items;
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-      {items.map((item) => (
+      {items.map((item, i) => (
         <div class="border-t border-zinc-200 pt-6">
-          <h2 class="text-xl font-bold text-zinc-900 mb-2">{item.name}</h2>
+          <span class="text-sm text-zinc-400 font-mono">0{i + 1}</span>
+          <h2 class="text-xl font-bold text-zinc-900 mt-3 mb-2">{item.name}</h2>
           <p class="text-base text-zinc-600 leading-relaxed">{item.description}</p>
         </div>
       ))}
+    </div>
+
+    <div class="mt-16">
+      <a href={ctaLink} class="text-lg font-bold text-zinc-900 hover:underline">
+        {locale === "el" ? "Επικοινωνήστε μαζί μας" : "Get in touch"} &rarr;
+      </a>
     </div>
   </div>
 </section>
