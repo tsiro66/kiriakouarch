@@ -1,5 +1,6 @@
 ---
 import { Font } from "astro:assets";
+import { ClientRouter } from "astro:transitions";
 import Navbar from "../components/ui/Navbar.astro";
 import Footer from "../components/ui/Footer.astro";
 import "../styles/global.css";
@@ -19,48 +20,66 @@ const hasHero = Astro.slots.has("hero");
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <ClientRouter />
     <Font cssVariable="--font-roboto-mono" />
   </head>
   <body>
     <Navbar />
     {hasHero && <slot name="hero" />}
-    <div id="content-wrapper" class="relative z-10 pointer-events-none">
-      {hasHero && <div id="hero-spacer"></div>}
-      <main class:list={["bg-zinc-50 pointer-events-auto", { "pt-22": !hasHero }]}>
+    <div id="content-wrapper" class:list={["relative z-10", { "pointer-events-none": hasHero }]}>
+      {hasHero && <div id="hero-spacer" class="h-screen"></div>}
+      <main class:list={["bg-zinc-50", { "pt-22": !hasHero, "pointer-events-auto": hasHero }]}>
         <slot />
       </main>
     </div>
     <Footer />
 
-    {hasHero && (
-      <script>
+    <script>
+      let controller;
+
+      function initLayout() {
+        if (controller) controller.abort();
+        controller = new AbortController();
+
         const hero = document.getElementById("hero");
         const spacer = document.getElementById("hero-spacer");
         const footer = document.getElementById("site-footer");
         const wrapper = document.getElementById("content-wrapper");
+        const hasHero = !!hero;
 
-        function setHeroSpacer() {
-          if (hero && spacer) {
-            spacer.style.height = `${hero.offsetHeight}px`;
+        function setFooterMargin() {
+          if (footer && wrapper) {
+            wrapper.style.marginBottom = `${footer.offsetHeight}px`;
           }
         }
 
-        function updateHeroZ() {
-          if (!hero || !footer || !wrapper) return;
-          const scrollBottom = window.scrollY + window.innerHeight;
-          const footerRevealPoint = wrapper.offsetTop + wrapper.offsetHeight;
-          if (scrollBottom > footerRevealPoint) {
-            hero.style.zIndex = "-1";
-          } else {
-            hero.style.zIndex = "";
+        setFooterMargin();
+
+        if (hasHero) {
+          function setHeroSpacer() {
+            if (spacer) spacer.style.height = `${hero.offsetHeight}px`;
           }
+
+          function updateHeroZ() {
+            if (!footer || !wrapper) return;
+            const scrollBottom = window.scrollY + window.innerHeight;
+            const footerRevealPoint = wrapper.offsetTop + wrapper.offsetHeight;
+            hero.style.zIndex = scrollBottom > footerRevealPoint ? "-1" : "";
+          }
+
+          setHeroSpacer();
+          updateHeroZ();
+          window.addEventListener("scroll", updateHeroZ, { signal: controller.signal });
         }
 
-        setHeroSpacer();
-        updateHeroZ();
-        window.addEventListener("resize", setHeroSpacer);
-        window.addEventListener("scroll", updateHeroZ);
-      </script>
-    )}
+        window.addEventListener("resize", () => {
+          setFooterMargin();
+          if (hasHero && spacer) spacer.style.height = `${hero.offsetHeight}px`;
+        }, { signal: controller.signal });
+      }
+
+      initLayout();
+      document.addEventListener("astro:after-swap", initLayout);
+    </script>
   </body>
 </html>

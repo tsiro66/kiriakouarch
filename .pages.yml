@@ -84,6 +84,7 @@ content:
     type: file
     path: src/i18n/en/home.json
     fields:
+      - { name: heroTitle,  label: "Hero Title",  type: string }
       - { name: heroAlt,    label: "Hero Image Alt Text", type: string }
       - { name: introTitle, label: "Intro Title", type: string }
       - { name: introText,  label: "Intro Text",  type: text }
@@ -93,6 +94,7 @@ content:
     type: file
     path: src/i18n/el/home.json
     fields:
+      - { name: heroTitle,  label: "Hero Title",  type: string }
       - { name: heroAlt,    label: "Hero Image Alt Text", type: string }
       - { name: introTitle, label: "Intro Title", type: string }
       - { name: introText,  label: "Intro Text",  type: text }

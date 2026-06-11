@@ -14,15 +14,21 @@ const pageTitle = t(locale, "nav", pageKey);
 
 <nav id="site-nav" class="fixed top-0 left-0 w-full z-50 mix-blend-difference">
   <div class="relative mx-auto px-6 flex items-center justify-between h-22">
-    <a href={`${prefix}/`} class="text-5xl font-bold tracking-tight text-white">
-      K
+    
+    <div class="flex gap-2 text-sm tracking-widest">
+      <span class={locale === "el" ? "font-bold text-white" : "text-white/50"}>
+        {locale === "el" ? "GR" : <a href={`${otherPrefix}${currentPath}`} class="hover:text-white/80">GR</a>}
+      </span>
+      <span class="text-white/30">|</span>
+      <span class={locale === "en" ? "font-bold text-white" : "text-white/50"}>
+        {locale === "en" ? "EN" : <a href={`${otherPrefix}${currentPath}`} class="hover:text-white/80">EN</a>}
+      </span>
+    </div>
+
+    <a href={`${prefix}/`} class="absolute left-1/2 -translate-x-1/2">
+      <img src="/logo.png" alt="Logo" class="h-20 md:h-25 w-auto invert" />
     </a>
 
-    {pageKey !== "home" && (
-      <span class="hidden md:block absolute left-1/2 -translate-x-1/2 text-white text-lg tracking-wide">
-        {pageTitle}
-      </span>
-    )}
 
     <button
       id="menu-toggle"
@@ -46,36 +52,38 @@ const pageTitle = t(locale, "nav", pageKey);
   <a href={`${prefix}/projects`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "projects")}</a>
   <a href={`${prefix}/services`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "services")}</a>
   <a href={`${prefix}/contact`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "contact")}</a>
-
-  <div class="flex gap-4 mt-4 text-lg md:text-2xl">
-    <span class={locale === "el" ? "font-bold text-zinc-900" : "text-zinc-400"}>
-      {locale === "el" ? "GR" : <a href={`${otherPrefix}${currentPath}`} class="hover:text-zinc-600 hover:underline">GR</a>}
-    </span>
-    <span class="text-zinc-300">|</span>
-    <span class={locale === "en" ? "font-bold text-zinc-900" : "text-zinc-400"}>
-      {locale === "en" ? "EN" : <a href={`${otherPrefix}${currentPath}`} class="hover:text-zinc-600 hover:underline">EN</a>}
-    </span>
-  </div>
 </div>
 
 <script>
-  const toggle = document.getElementById("menu-toggle")!;
-  const menu = document.getElementById("mobile-menu")!;
-  const line1 = document.getElementById("line-1")!;
-  const line2 = document.getElementById("line-2")!;
+  function setupMenu() {
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    const line1 = document.getElementById("line-1");
+    const line2 = document.getElementById("line-2");
+    if (!toggle || !menu || !line1 || !line2) return;
 
-  toggle.addEventListener("click", () => {
-    const open = menu.classList.toggle("hidden");
-    const isOpen = !open;
-    menu.classList.toggle("flex", isOpen);
-    toggle.setAttribute("aria-expanded", String(isOpen));
+    menu.classList.add("hidden");
+    menu.classList.remove("flex");
+    line1.style.transform = "";
+    line2.style.transform = "";
+    toggle.setAttribute("aria-expanded", "false");
 
-    if (isOpen) {
-      line1.style.transform = "translateY(4px) rotate(45deg)";
-      line2.style.transform = "translateY(-4px) rotate(-45deg)";
-    } else {
-      line1.style.transform = "";
-      line2.style.transform = "";
-    }
-  });
+    toggle.addEventListener("click", () => {
+      const open = menu.classList.toggle("hidden");
+      const isOpen = !open;
+      menu.classList.toggle("flex", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+
+      if (isOpen) {
+        line1.style.transform = "translateY(4px) rotate(45deg)";
+        line2.style.transform = "translateY(-4px) rotate(-45deg)";
+      } else {
+        line1.style.transform = "";
+        line2.style.transform = "";
+      }
+    });
+  }
+
+  document.addEventListener("astro:after-swap", setupMenu);
+  setupMenu();
 </script>

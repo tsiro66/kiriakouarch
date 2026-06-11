@@ -49,12 +49,4 @@ const isHome = !["about", "projects", "services", "contact"].includes(pathSegmen
   </div>
 </footer>
 
-<script>
-  function setFooterMargin() {
-    const footer = document.getElementById("site-footer")!;
-    const wrapper = document.getElementById("content-wrapper")!;
-    wrapper.style.marginBottom = `${footer.offsetHeight}px`;
-  }
-  setFooterMargin();
-  window.addEventListener("resize", setFooterMargin);
-</script>
+

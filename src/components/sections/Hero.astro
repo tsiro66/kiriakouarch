@@ -6,7 +6,7 @@ import heroImg from "../../assets/hero-img.jpg";
 const locale = getLocaleFromUrl(Astro.url);
 ---
 
-<section id="hero" class="fixed top-0 left-0 w-full z-5">
+<section id="hero" class="fixed top-0 left-0 w-full z-10">
   <div class="relative w-full h-screen">
     <Image
       src={heroImg}
@@ -14,14 +14,13 @@ const locale = getLocaleFromUrl(Astro.url);
       class="absolute inset-0 w-full h-full object-cover"
       widths={[640, 1024, 1440, 1920]}
       sizes="100vw"
+      loading="eager"
     />
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent z-[1]"></div>
 
     <div class="relative z-10 flex flex-col justify-end h-full px-6 pb-16 md:pb-24 max-w-7xl mx-auto">
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
-        Kyriakou<br />Architecture
-      </h1>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight" set:html={t(locale, "home", "heroTitle")}></h1>
       <p class="text-sm md:text-base tracking-widest uppercase text-zinc-300 mt-4">
         {locale === "el" ? "Πάτρα · Από το 1975" : "Patras · Since 1975"}
       </p>

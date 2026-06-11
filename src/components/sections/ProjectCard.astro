@@ -38,5 +38,16 @@ const href = lang === "el" ? `/projects/${slug}` : `/en/projects/${slug}`;
         </p>
       )
     }
+    {
+      tags && tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-3">
+          {tags.map((tag) => (
+            <span class="text-xs px-3 py-1 bg-zinc-200 text-zinc-700 rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
   </div>
 </a>

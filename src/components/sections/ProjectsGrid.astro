@@ -6,25 +6,90 @@ import ProjectCard from "./ProjectCard.astro";
 const locale = getLocaleFromUrl(Astro.url);
 const allProjects = await getCollection("projects", ({ data }) => data.lang === locale);
 const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
+
+const allTags = Array.from(
+  new Set(projects.flatMap((p) => p.data.tags || []))
+).sort();
 ---
 
 <section class="px-6 py-24 md:py-32 bg-zinc-50">
   <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+    <div class="mb-10 md:mb-14">
+      <h1 class="text-3xl md:text-4xl font-bold text-zinc-900">
+        {locale === "el" ? "Τα έργα μας" : "Our Projects"}
+      </h1>
+      {
+        allTags.length > 0 && (
+          <div class="flex flex-wrap gap-3 mt-4" id="project-filters">
+            <button
+              type="button"
+              class="filter-btn text-sm px-6 py-2.5 rounded-full bg-zinc-900 text-white cursor-pointer transition-colors"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              {locale === "el" ? "Όλα" : "All"}
+            </button>
+            {allTags.map((tag) => (
+              <button
+                type="button"
+              class="filter-btn text-sm px-6 py-2.5 rounded-full bg-transparent border border-zinc-900 text-zinc-900 cursor-pointer hover:bg-zinc-900 hover:text-white transition-colors"
+              data-filter={tag}
+              aria-pressed="false"
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        )
+      }
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16" id="projects-grid">
       {
         projects.map((project) => (
-          <ProjectCard
-            title={project.data.title}
-            slug={project.id.split("/")[1]}
-            description={project.data.description}
-            thumbnail={project.data.thumbnail}
-            tags={project.data.tags}
-            year={project.data.year}
-            location={project.data.location}
-            lang={locale}
-          />
+          <div data-tags={JSON.stringify(project.data.tags || [])}>
+            <ProjectCard
+              title={project.data.title}
+              slug={project.id.split("/")[1]}
+              description={project.data.description}
+              thumbnail={project.data.thumbnail}
+              tags={project.data.tags}
+              year={project.data.year}
+              location={project.data.location}
+              lang={locale}
+            />
+          </div>
         ))
       }
     </div>
   </div>
 </section>
+
+<script data-astro-rerun>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>("#project-filters .filter-btn");
+  const projectItems = document.querySelectorAll<HTMLDivElement>("#projects-grid > [data-tags]");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+      if (!filter) return;
+
+      filterBtns.forEach((b) => {
+        b.setAttribute("aria-pressed", "false");
+        b.classList.remove("bg-zinc-900", "text-white");
+        b.classList.add("bg-transparent", "border", "border-zinc-900", "text-zinc-900", "hover:bg-zinc-900", "hover:text-white");
+      });
+      btn.setAttribute("aria-pressed", "true");
+      btn.classList.add("bg-zinc-900", "text-white");
+      btn.classList.remove("bg-transparent", "border", "border-zinc-900", "text-zinc-900", "hover:bg-zinc-900", "hover:text-white");
+
+      projectItems.forEach((item) => {
+        const tags: string[] = JSON.parse(item.dataset.tags || "[]");
+        if (filter === "all" || tags.includes(filter)) {
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
