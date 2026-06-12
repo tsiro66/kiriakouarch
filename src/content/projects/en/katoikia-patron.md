@@ -6,7 +6,6 @@ thumbnail: ../../../assets/projects/project-01.jpg
 tags:
   - Residential
   - Bioclimatic Design
-  - test
 year: 2023
 location: Patras
 featured: true
