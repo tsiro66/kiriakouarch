@@ -1,0 +1,68 @@
+---
+import { getLocaleFromUrl } from "../../i18n";
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const alternateLocale = locale === "el" ? "en" : "el";
+const alternatePath = locale === "el"
+  ? `/en${Astro.url.pathname}`
+  : Astro.url.pathname.replace(/^\/en/, "");
+const alternateUrl = new URL(alternatePath, Astro.site).toString();
+
+const ogLocale = locale === "el" ? "el_GR" : "en_US";
+const ogImage = new URL("/logo.png", Astro.site).toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Architect",
+  name: "Kiriakou Architecture",
+  alternateName: "Κυριακού Αρχιτεκτονική",
+  url: Astro.site?.toString(),
+  logo: ogImage,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Κουμανιώτη 23",
+    addressLocality: "Πάτρα",
+    postalCode: "262 22",
+    addressCountry: "GR",
+  },
+  telephone: "+302610321146",
+  email: "info@kiriakouarch.gr",
+  foundingDate: "1975",
+  openingHours: "Mo-Fr 09:00-17:00",
+};
+---
+
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="alternate" hreflang={locale === "el" ? "el" : "en"} href={canonicalUrl} />
+<link rel="alternate" hreflang={alternateLocale === "el" ? "el" : "en"} href={alternateUrl} />
+<link rel="alternate" hreflang="x-default" href={new URL(Astro.url.pathname.replace(/^\/en/, ""), Astro.site).toString()} />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:site_name" content="Kiriakouarch" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+{noindex && <meta name="robots" content="noindex" />}
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

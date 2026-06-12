@@ -1,16 +1,19 @@
 ---
 import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
+import Head from "../components/seo/Head.astro";
 import Navbar from "../components/ui/Navbar.astro";
 import Footer from "../components/ui/Footer.astro";
 import "../styles/global.css";
 
 interface Props {
   title: string;
+  description: string;
   lang?: string;
+  noindex?: boolean;
 }
 
-const { title, lang = "en" } = Astro.props;
+const { title, description, lang = "en", noindex = false } = Astro.props;
 const hasHero = Astro.slots.has("hero");
 ---
 
@@ -20,15 +23,19 @@ const hasHero = Astro.slots.has("hero");
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <Head title={title} description={description} noindex={noindex} />
     <ClientRouter />
     <Font cssVariable="--font-roboto-mono" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">
+      Skip to content
+    </a>
     <Navbar />
     {hasHero && <slot name="hero" />}
     <div id="content-wrapper" class:list={["relative z-10", { "pointer-events-none": hasHero }]}>
-      {hasHero && <div id="hero-spacer" class="h-screen"></div>}
-      <main class:list={["bg-zinc-50", { "pt-22": !hasHero, "pointer-events-auto": hasHero }]}>
+      {hasHero && <div id="hero-spacer" class="h-screen" aria-hidden="true"></div>}
+      <main id="main-content" class:list={["bg-zinc-50", { "pt-22": !hasHero, "pointer-events-auto": hasHero }]}>
         <slot />
       </main>
     </div>

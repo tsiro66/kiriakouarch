@@ -4,5 +4,7 @@
   "projects": "Our Projects",
   "services": "Services",
   "contact": "Contact",
-  "menu": "Menu"
+  "menu": "Menu",
+  "projectsMetaDescription": "Browse the architectural projects of Kiriakou Studio. Residences, apartment buildings, commercial spaces and hotels.",
+  "404MetaDescription": "The page you requested was not found."
 }

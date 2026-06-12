@@ -12,7 +12,7 @@ const allTags = Array.from(
 ).sort();
 ---
 
-<section class="px-6 py-24 md:py-32 bg-zinc-50">
+<section class="px-6 pt-12 md:pt-16 pb-24 md:pb-32 bg-zinc-50">
   <div class="max-w-7xl mx-auto">
     <div class="mb-10 md:mb-14">
       <h1 class="text-3xl md:text-4xl font-bold text-zinc-900">
@@ -20,10 +20,10 @@ const allTags = Array.from(
       </h1>
       {
         allTags.length > 0 && (
-          <div class="flex flex-wrap gap-3 mt-4" id="project-filters">
+          <div class="flex flex-wrap gap-2 md:gap-3 mt-4" id="project-filters">
             <button
               type="button"
-              class="filter-btn text-sm px-6 py-2.5 rounded-full bg-zinc-900 text-white cursor-pointer transition-colors"
+              class="filter-btn text-xs md:text-sm px-4 md:px-6 py-1.5 md:py-2.5 rounded-full bg-zinc-900 text-white cursor-pointer transition-colors"
               data-filter="all"
               aria-pressed="true"
             >
@@ -32,7 +32,7 @@ const allTags = Array.from(
             {allTags.map((tag) => (
               <button
                 type="button"
-              class="filter-btn text-sm px-6 py-2.5 rounded-full bg-transparent border border-zinc-900 text-zinc-900 cursor-pointer hover:bg-zinc-900 hover:text-white transition-colors"
+              class="filter-btn text-xs md:text-sm px-4 md:px-6 py-1.5 md:py-2.5 rounded-full bg-transparent border border-zinc-900 text-zinc-900 cursor-pointer hover:bg-zinc-900 hover:text-white transition-colors"
               data-filter={tag}
               aria-pressed="false"
               >
@@ -64,32 +64,42 @@ const allTags = Array.from(
   </div>
 </section>
 
-<script data-astro-rerun>
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>("#project-filters .filter-btn");
-  const projectItems = document.querySelectorAll<HTMLDivElement>("#projects-grid > [data-tags]");
+<script>
+  let controller;
 
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const filter = btn.dataset.filter;
-      if (!filter) return;
+  function initFilters() {
+    if (controller) controller.abort();
+    controller = new AbortController();
 
-      filterBtns.forEach((b) => {
-        b.setAttribute("aria-pressed", "false");
-        b.classList.remove("bg-zinc-900", "text-white");
-        b.classList.add("bg-transparent", "border", "border-zinc-900", "text-zinc-900", "hover:bg-zinc-900", "hover:text-white");
-      });
-      btn.setAttribute("aria-pressed", "true");
-      btn.classList.add("bg-zinc-900", "text-white");
-      btn.classList.remove("bg-transparent", "border", "border-zinc-900", "text-zinc-900", "hover:bg-zinc-900", "hover:text-white");
+    const filterBtns = document.querySelectorAll("#project-filters .filter-btn");
+    const projectItems = document.querySelectorAll("#projects-grid > [data-tags]");
 
-      projectItems.forEach((item) => {
-        const tags: string[] = JSON.parse(item.dataset.tags || "[]");
-        if (filter === "all" || tags.includes(filter)) {
-          item.style.display = "";
-        } else {
-          item.style.display = "none";
-        }
-      });
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+        if (!filter) return;
+
+        filterBtns.forEach((b) => {
+          b.setAttribute("aria-pressed", "false");
+          b.classList.remove("bg-zinc-900", "text-white");
+          b.classList.add("bg-transparent", "border", "border-zinc-900", "text-zinc-900", "hover:bg-zinc-900", "hover:text-white");
+        });
+        btn.setAttribute("aria-pressed", "true");
+        btn.classList.add("bg-zinc-900", "text-white");
+        btn.classList.remove("bg-transparent", "border", "border-zinc-900", "text-zinc-900", "hover:bg-zinc-900", "hover:text-white");
+
+        projectItems.forEach((item) => {
+          const tags = JSON.parse(item.dataset.tags || "[]");
+          if (filter === "all" || tags.includes(filter)) {
+            item.style.display = "";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      }, { signal: controller.signal });
     });
-  });
+  }
+
+  initFilters();
+  document.addEventListener("astro:after-swap", initFilters);
 </script>

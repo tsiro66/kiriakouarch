@@ -1,8 +1,9 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import Services from "../../components/sections/Services.astro";
+import { t } from "../../i18n";
 ---
 
-<MainLayout title="Services | Kiriakouarch" lang="en">
+<MainLayout title="Services | Kiriakouarch" description={t("en", "services", "metaDescription")} lang="en">
   <Services />
 </MainLayout>

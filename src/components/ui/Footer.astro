@@ -13,37 +13,37 @@ const isHome = !["about", "projects", "services", "contact"].includes(pathSegmen
 <footer id="site-footer" class:list={["fixed bottom-0 left-0 w-full z-0", isHome ? "bg-zinc-50" : "bg-zinc-900"]}>
   <div class="px-6 py-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-      <div class:list={["flex flex-col gap-3 text-sm", isHome ? "text-zinc-500" : "text-zinc-400"]}>
+      <nav class:list={["flex flex-col gap-3 text-sm", isHome ? "text-zinc-600" : "text-zinc-400"]}>
         <a href={`${prefix}/`} class:list={["hover:underline transition-colors", isHome ? "hover:text-zinc-900" : "hover:text-white"]}>{t(locale, "nav", "home")}</a>
         <a href={`${prefix}/about`} class:list={["hover:underline transition-colors", isHome ? "hover:text-zinc-900" : "hover:text-white"]}>{t(locale, "nav", "about")}</a>
         <a href={`${prefix}/projects`} class:list={["hover:underline transition-colors", isHome ? "hover:text-zinc-900" : "hover:text-white"]}>{t(locale, "nav", "projects")}</a>
         <a href={`${prefix}/services`} class:list={["hover:underline transition-colors", isHome ? "hover:text-zinc-900" : "hover:text-white"]}>{t(locale, "nav", "services")}</a>
         <a href={`${prefix}/contact`} class:list={["hover:underline transition-colors", isHome ? "hover:text-zinc-900" : "hover:text-white"]}>{t(locale, "nav", "contact")}</a>
-      </div>
+      </nav>
 
       <div class="flex flex-col gap-6 text-sm">
         <div>
-          <span class:list={["text-xs tracking-widest uppercase", isHome ? "text-zinc-400" : "text-zinc-500"]}>{t(locale, "footer", "addressLabel")}</span>
+          <span class:list={["text-xs tracking-widest uppercase", isHome ? "text-zinc-500" : "text-zinc-400"]}>{t(locale, "footer", "addressLabel")}</span>
           <p class:list={["mt-1", isHome ? "text-zinc-600" : "text-zinc-300"]}>{t(locale, "footer", "address")}</p>
         </div>
         <div>
-          <span class:list={["text-xs tracking-widest uppercase", isHome ? "text-zinc-400" : "text-zinc-500"]}>{t(locale, "footer", "phoneLabel")}</span>
+          <span class:list={["text-xs tracking-widest uppercase", isHome ? "text-zinc-500" : "text-zinc-400"]}>{t(locale, "footer", "phoneLabel")}</span>
           <p class="mt-1"><a href="tel:+302610321146" class:list={["hover:underline transition-colors", isHome ? "text-zinc-600 hover:text-zinc-900" : "text-zinc-300 hover:text-white"]}>{t(locale, "footer", "phone")}</a></p>
         </div>
         <div>
-          <span class:list={["text-xs tracking-widest uppercase", isHome ? "text-zinc-400" : "text-zinc-500"]}>{t(locale, "footer", "emailLabel")}</span>
+          <span class:list={["text-xs tracking-widest uppercase", isHome ? "text-zinc-500" : "text-zinc-400"]}>{t(locale, "footer", "emailLabel")}</span>
           <p class="mt-1"><a href={`mailto:${t(locale, "footer", "email")}`} class:list={["hover:underline transition-colors", isHome ? "text-zinc-600 hover:text-zinc-900" : "text-zinc-300 hover:text-white"]}>{t(locale, "footer", "email")}</a></p>
         </div>
       </div>
 
-      <div class:list={["flex flex-col justify-end text-sm", isHome ? "text-zinc-500" : "text-zinc-400"]}>
+      <div class:list={["flex flex-col justify-end text-sm", isHome ? "text-zinc-600" : "text-zinc-400"]}>
         <p class="leading-relaxed">
           {t(locale, "home", "introTitle")}
         </p>
       </div>
     </div>
 
-    <div class:list={["mt-16 pt-6 border-t text-xs", isHome ? "border-zinc-200 text-zinc-400" : "border-zinc-700 text-zinc-500"]}>
+    <div class:list={["mt-16 pt-6 border-t text-xs", isHome ? "border-zinc-200 text-zinc-500" : "border-zinc-700 text-zinc-500"]}>
       <span>&copy; {year} Kiriakouarch. {t(locale, "footer", "rights")}.</span>
     </div>
   </div>

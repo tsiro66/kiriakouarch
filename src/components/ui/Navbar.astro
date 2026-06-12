@@ -12,21 +12,21 @@ const pageKey = ["about", "projects", "services", "contact"].includes(pathSegmen
 const pageTitle = t(locale, "nav", pageKey);
 ---
 
-<nav id="site-nav" class="fixed top-0 left-0 w-full z-50 mix-blend-difference">
+<nav id="site-nav" aria-label={t(locale, "nav", "menu")} class="fixed top-0 left-0 w-full z-50 mix-blend-difference">
   <div class="relative mx-auto px-6 flex items-center justify-between h-22">
     
-    <div class="flex gap-2 text-sm tracking-widest">
+    <div class="flex gap-2 text-sm tracking-widest" role="group" aria-label="Language">
       <span class={locale === "el" ? "font-bold text-white" : "text-white/50"}>
-        {locale === "el" ? "GR" : <a href={`${otherPrefix}${currentPath}`} class="hover:text-white/80">GR</a>}
+        {locale === "el" ? <span aria-current="true" class="inline-flex items-center min-h-12 px-1 font-bold text-white">GR</span> : <a href={`${otherPrefix}${currentPath}`} hreflang="el" class="inline-flex items-center min-h-12 px-1 hover:text-white/80">GR</a>}
       </span>
-      <span class="text-white/30">|</span>
+      <span class="text-white/30 inline-flex items-center" aria-hidden="true">|</span>
       <span class={locale === "en" ? "font-bold text-white" : "text-white/50"}>
-        {locale === "en" ? "EN" : <a href={`${otherPrefix}${currentPath}`} class="hover:text-white/80">EN</a>}
+        {locale === "en" ? <span aria-current="true" class="inline-flex items-center min-h-12 px-1 font-bold text-white">EN</span> : <a href={`${otherPrefix}${currentPath}`} hreflang="en" class="inline-flex items-center min-h-12 px-1 hover:text-white/80">EN</a>}
       </span>
     </div>
 
-    <a href={`${prefix}/`} class="absolute left-1/2 -translate-x-1/2">
-      <img src="/logo.png" alt="Logo" class="h-20 md:h-25 w-auto invert" />
+    <a href={`${prefix}/`} class="absolute left-1/2 -translate-x-1/2 inline-flex items-center min-h-12">
+      <img src="/logo.png" alt="Kiriakouarch" class="h-20 md:h-25 w-auto invert" width="80" height="100" />
     </a>
 
 
@@ -35,7 +35,8 @@ const pageTitle = t(locale, "nav", pageKey);
       type="button"
       aria-label={t(locale, "nav", "menu")}
       aria-expanded="false"
-      class="flex flex-col justify-center items-center gap-1.5 w-10 h-10 cursor-pointer"
+      aria-controls="mobile-menu"
+      class="flex flex-col justify-center items-center gap-1.5 w-12 h-12 cursor-pointer"
     >
       <span class="block w-10 h-0.5 bg-white transition-transform duration-300 origin-center" id="line-1"></span>
       <span class="block w-10 h-0.5 bg-white transition-transform duration-300 origin-center" id="line-2"></span>
@@ -45,13 +46,15 @@ const pageTitle = t(locale, "nav", pageKey);
 
 <div
   id="mobile-menu"
+  role="dialog"
+  aria-label={t(locale, "nav", "menu")}
   class="fixed inset-0 z-40 hidden flex-col items-center justify-center gap-8 bg-zinc-50"
 >
-  <a href={`${prefix}/`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "home")}</a>
-  <a href={`${prefix}/about`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "about")}</a>
-  <a href={`${prefix}/projects`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "projects")}</a>
-  <a href={`${prefix}/services`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "services")}</a>
-  <a href={`${prefix}/contact`} class="text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "contact")}</a>
+  <a href={`${prefix}/`} class="inline-flex items-center min-h-12 text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "home")}</a>
+  <a href={`${prefix}/about`} class="inline-flex items-center min-h-12 text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "about")}</a>
+  <a href={`${prefix}/projects`} class="inline-flex items-center min-h-12 text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "projects")}</a>
+  <a href={`${prefix}/services`} class="inline-flex items-center min-h-12 text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "services")}</a>
+  <a href={`${prefix}/contact`} class="inline-flex items-center min-h-12 text-2xl md:text-5xl text-zinc-900 hover:text-zinc-600 hover:underline">{t(locale, "nav", "contact")}</a>
 </div>
 
 <script>

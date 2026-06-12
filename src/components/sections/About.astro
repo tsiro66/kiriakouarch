@@ -11,7 +11,7 @@ const ctaLink = locale === "el" ? "/projects" : "/en/projects";
 const milestones = locale === "el" ? elAbout.milestones : enAbout.milestones;
 ---
 
-<section class="px-6 py-24 md:py-32 bg-zinc-50 min-h-screen">
+<section class="px-6 pt-12 md:pt-16 pb-24 md:pb-32 bg-zinc-50 min-h-screen">
   <div class="max-w-7xl mx-auto">
     <h1 class="text-3xl md:text-4xl font-bold text-zinc-900 mb-6">
       {t(locale, "about", "title")}
@@ -35,7 +35,7 @@ const milestones = locale === "el" ? elAbout.milestones : enAbout.milestones;
         <h2 class="text-xl font-bold text-zinc-900 mb-1">
           {t(locale, "about", "philosophyTitle")}
         </h2>
-        <span class="text-sm tracking-widest uppercase text-zinc-400">
+        <span class="text-sm tracking-widest uppercase text-zinc-500">
           {t(locale, "about", "philosophyRole")}
         </span>
         <p class="text-base text-zinc-600 leading-relaxed mt-4">
@@ -46,7 +46,7 @@ const milestones = locale === "el" ? elAbout.milestones : enAbout.milestones;
         <h2 class="text-xl font-bold text-zinc-900 mb-1">
           {t(locale, "about", "experienceTitle")}
         </h2>
-        <span class="text-sm tracking-widest uppercase text-zinc-400">
+        <span class="text-sm tracking-widest uppercase text-zinc-500">
           {t(locale, "about", "experienceRole")}
         </span>
         <p class="text-base text-zinc-600 leading-relaxed mt-4">
@@ -56,14 +56,14 @@ const milestones = locale === "el" ? elAbout.milestones : enAbout.milestones;
     </div>
 
     <div class="mb-16">
-      <span class="text-sm tracking-widest uppercase text-zinc-400">
+      <span class="text-sm tracking-widest uppercase text-zinc-500">
         {t(locale, "about", "milestonesTitle")}
       </span>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 mt-8">
         {milestones.map((m) => (
           <div class="flex gap-6 border-t border-zinc-200 pt-4">
             <span class="text-sm font-bold text-zinc-900 shrink-0">{m.year}</span>
-            <p class="text-sm text-zinc-500">{m.text}</p>
+            <p class="text-sm text-zinc-600">{m.text}</p>
           </div>
         ))}
       </div>

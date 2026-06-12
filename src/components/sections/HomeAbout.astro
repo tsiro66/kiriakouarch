@@ -21,9 +21,9 @@ const projectsLink = locale === "el" ? "/projects" : "/en/projects";
     </div>
 
     <div>
-      <span class="text-sm tracking-widest uppercase text-zinc-400">
+      <h2 class="text-sm tracking-widest uppercase text-zinc-500 font-normal">
         {t(locale, "about", "title")}
-      </span>
+      </h2>
       <p class="text-lg md:text-xl text-zinc-600 leading-relaxed mt-4 mb-8">
         {t(locale, "about", "intro")}
       </p>
@@ -31,16 +31,16 @@ const projectsLink = locale === "el" ? "/projects" : "/en/projects";
       <div class="space-y-8">
         <div>
           <h3 class="text-base font-bold text-zinc-900 mb-1">{t(locale, "about", "philosophyTitle")}</h3>
-          <p class="text-sm text-zinc-500 leading-relaxed">{t(locale, "about", "philosophyText")}</p>
+          <p class="text-sm text-zinc-600 leading-relaxed">{t(locale, "about", "philosophyText")}</p>
         </div>
         <div>
           <h3 class="text-base font-bold text-zinc-900 mb-1">{t(locale, "about", "experienceTitle")}</h3>
-          <p class="text-sm text-zinc-500 leading-relaxed">{t(locale, "about", "experienceText")}</p>
+          <p class="text-sm text-zinc-600 leading-relaxed">{t(locale, "about", "experienceText")}</p>
         </div>
       </div>
 
       <div class="mt-10 flex gap-8">
-        <a href={aboutLink} class="text-sm tracking-widest uppercase text-zinc-500 hover:text-zinc-900 hover:underline transition-colors">
+        <a href={aboutLink} class="text-sm tracking-widest uppercase text-zinc-600 hover:text-zinc-900 hover:underline transition-colors">
           {locale === "el" ? "Περισσότερα" : "Learn more"} &rarr;
         </a>
 
