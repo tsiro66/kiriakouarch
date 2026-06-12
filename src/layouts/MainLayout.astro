@@ -42,10 +42,10 @@ const hasHero = Astro.slots.has("hero");
     <Footer />
 
     <script>
-      let controller;
+      let controller: AbortController | undefined;
 
       function initLayout() {
-        if (controller) controller.abort();
+        controller?.abort();
         controller = new AbortController();
 
         const hero = document.getElementById("hero");
@@ -63,15 +63,17 @@ const hasHero = Astro.slots.has("hero");
         setFooterMargin();
 
         if (hasHero) {
+          const heroEl = hero!;
+
           function setHeroSpacer() {
-            if (spacer) spacer.style.height = `${hero.offsetHeight}px`;
+            if (spacer) spacer.style.height = `${heroEl.offsetHeight}px`;
           }
 
           function updateHeroZ() {
             if (!footer || !wrapper) return;
             const scrollBottom = window.scrollY + window.innerHeight;
             const footerRevealPoint = wrapper.offsetTop + wrapper.offsetHeight;
-            hero.style.zIndex = scrollBottom > footerRevealPoint ? "-1" : "";
+            heroEl.style.zIndex = scrollBottom > footerRevealPoint ? "-1" : "";
           }
 
           setHeroSpacer();
@@ -81,7 +83,7 @@ const hasHero = Astro.slots.has("hero");
 
         window.addEventListener("resize", () => {
           setFooterMargin();
-          if (hasHero && spacer) spacer.style.height = `${hero.offsetHeight}px`;
+          if (hasHero && hero && spacer) spacer.style.height = `${hero.offsetHeight}px`;
         }, { signal: controller.signal });
       }
 

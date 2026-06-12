@@ -65,14 +65,14 @@ const allTags = Array.from(
 </section>
 
 <script>
-  let controller;
+  let controller: AbortController | undefined;
 
   function initFilters() {
-    if (controller) controller.abort();
+    controller?.abort();
     controller = new AbortController();
 
-    const filterBtns = document.querySelectorAll("#project-filters .filter-btn");
-    const projectItems = document.querySelectorAll("#projects-grid > [data-tags]");
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>("#project-filters .filter-btn");
+    const projectItems = document.querySelectorAll<HTMLElement>("#projects-grid > [data-tags]");
 
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -96,7 +96,7 @@ const allTags = Array.from(
             item.style.display = "none";
           }
         });
-      }, { signal: controller.signal });
+      }, { signal: controller!.signal });
     });
   }
 

@@ -47,7 +47,7 @@ const en = {
   </section>
 </MainLayout>
 
-<script define:vars={{ el, en }}>
+<script is:inline define:vars={{ el, en }}>
   const isEn = window.location.pathname.startsWith("/en");
   const basePath = window.location.pathname.replace(/^\/en/, "") || "/";
 

@@ -8,9 +8,6 @@ const otherPrefix = otherLocale === "el" ? "" : `/${otherLocale}`;
 const currentPath = Astro.url.pathname.replace(/^\/(en|el)/, "");
 const is404 = /^\/404/.test(currentPath);
 
-const pathSegment = is404 ? "home" : (currentPath.replace(/^\//, "").split("/")[0] || "home");
-const pageKey = ["about", "projects", "services", "contact"].includes(pathSegment) ? pathSegment : "home";
-const pageTitle = t(locale, "nav", pageKey);
 const localeSwitchPath = is404 ? "/" : currentPath;
 ---
 
