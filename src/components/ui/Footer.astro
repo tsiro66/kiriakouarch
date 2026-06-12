@@ -10,9 +10,20 @@ const pathSegment = currentPath.replace(/^\//, "").split("/")[0] || "home";
 const isHome = !["about", "projects", "services", "contact"].includes(pathSegment);
 ---
 
-<footer id="site-footer" class:list={["fixed bottom-0 left-0 w-full z-0", isHome ? "bg-zinc-50" : "bg-zinc-900"]}>
+<footer id="site-footer" class:list={["fixed bottom-0 left-0 w-full z-0 overflow-hidden", isHome ? "bg-zinc-50" : "bg-zinc-900"]}>
+  <img
+    src="/logo.png"
+    alt=""
+    aria-hidden="true"
+    class:list={[
+      "absolute -right-8 -bottom-14 translate-x-[15%] translate-y-[20%] w-[400px] md:w-[700px] h-auto select-none pointer-events-none",
+      isHome ? "opacity-[0.1]" : "opacity-[0.05] invert"
+    ]}
+    width="420"
+    height="525"
+  />
   <div class="px-6 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8">
       <nav class:list={["flex flex-col gap-3 text-sm", isHome ? "text-zinc-600" : "text-zinc-400"]}>
         <a href={`${prefix}/`} class:list={["hover:underline transition-colors", isHome ? "hover:text-zinc-900" : "hover:text-white"]}>{t(locale, "nav", "home")}</a>
         <a href={`${prefix}/about`} class:list={["hover:underline transition-colors", isHome ? "hover:text-zinc-900" : "hover:text-white"]}>{t(locale, "nav", "about")}</a>
@@ -34,12 +45,6 @@ const isHome = !["about", "projects", "services", "contact"].includes(pathSegmen
           <span class:list={["text-xs tracking-widest uppercase", isHome ? "text-zinc-500" : "text-zinc-400"]}>{t(locale, "footer", "emailLabel")}</span>
           <p class="mt-1"><a href={`mailto:${t(locale, "footer", "email")}`} class:list={["hover:underline transition-colors", isHome ? "text-zinc-600 hover:text-zinc-900" : "text-zinc-300 hover:text-white"]}>{t(locale, "footer", "email")}</a></p>
         </div>
-      </div>
-
-      <div class:list={["flex flex-col justify-end text-sm", isHome ? "text-zinc-600" : "text-zinc-400"]}>
-        <p class="leading-relaxed">
-          {t(locale, "home", "introTitle")}
-        </p>
       </div>
     </div>
 
