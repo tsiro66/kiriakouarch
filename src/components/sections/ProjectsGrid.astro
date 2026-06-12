@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { getLocaleFromUrl } from "../../i18n";
+import { t, getLocaleFromUrl } from "../../i18n";
 import ProjectCard from "./ProjectCard.astro";
 
 const locale = getLocaleFromUrl(Astro.url);
@@ -16,7 +16,7 @@ const allTags = Array.from(
   <div class="max-w-7xl mx-auto">
     <div class="mb-10 md:mb-14">
       <h1 class="text-3xl md:text-4xl font-bold text-zinc-900">
-        {locale === "el" ? "Τα έργα μας" : "Our Projects"}
+        {t(locale, "projects", "title")}
       </h1>
       {
         allTags.length > 0 && (
@@ -27,7 +27,7 @@ const allTags = Array.from(
               data-filter="all"
               aria-pressed="true"
             >
-              {locale === "el" ? "Όλα" : "All"}
+              {t(locale, "projects", "filterAll")}
             </button>
             {allTags.map((tag) => (
               <button

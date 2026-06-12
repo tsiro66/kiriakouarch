@@ -10,14 +10,18 @@ import enServices from "./en/services.json";
 import elServices from "./el/services.json";
 import enContact from "./en/contact.json";
 import elContact from "./el/contact.json";
+import enProjects from "./en/projects.json";
+import elProjects from "./el/projects.json";
+import enNotFound from "./en/notfound.json";
+import elNotFound from "./el/notfound.json";
 
 const translations = {
-  en: { nav: enNav, home: enHome, footer: enFooter, about: enAbout, services: enServices, contact: enContact },
-  el: { nav: elNav, home: elHome, footer: elFooter, about: elAbout, services: elServices, contact: elContact },
+  en: { nav: enNav, home: enHome, footer: enFooter, about: enAbout, services: enServices, contact: enContact, projects: enProjects, notFound: enNotFound },
+  el: { nav: elNav, home: elHome, footer: elFooter, about: elAbout, services: elServices, contact: elContact, projects: elProjects, notFound: elNotFound },
 } as const;
 
 export type Locale = keyof typeof translations;
-type Section = "nav" | "home" | "footer" | "about" | "services" | "contact";
+type Section = "nav" | "home" | "footer" | "about" | "services" | "contact" | "projects" | "notFound";
 
 export function t(locale: Locale, section: Section, key: string): string {
   return (translations[locale]?.[section] as Record<string, unknown>)?.[key] as string ?? key;

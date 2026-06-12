@@ -30,16 +30,14 @@ const ctaLink = locale === "el" ? "/contact" : "/en/contact";
 
     <div class="mt-32 md:mt-40 pt-16 border-t border-zinc-200">
       <div class="max-w-2xl">
-        <p class="text-xl md:text-2xl text-zinc-600 leading-relaxed mb-10">
-          {locale === "el"
-            ? "Έχετε ένα έργο στο μυαλό σας; Ας το συζητήσουμε."
-            : "Have a project in mind? Let’s talk about it."}
+<p class="text-xl md:text-2xl text-zinc-600 leading-relaxed mb-10">
+          {t(locale, "services", "ctaText")}
         </p>
         <a
           href={ctaLink}
           class="inline-block text-lg font-semibold text-zinc-900 border-b-2 border-zinc-900 pb-1 hover:text-zinc-500 hover:border-zinc-500 transition-colors duration-300"
         >
-          {locale === "el" ? "Επικοινωνήστε μαζί μας" : "Get in touch"}
+          {t(locale, "services", "ctaButton")}
         </a>
       </div>
     </div>

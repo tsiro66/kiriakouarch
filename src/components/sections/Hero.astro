@@ -22,7 +22,7 @@ const locale = getLocaleFromUrl(Astro.url);
     <div class="relative z-10 flex flex-col justify-end h-full px-6 pb-16 md:pb-24 max-w-7xl mx-auto">
       <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight" set:html={t(locale, "home", "heroTitle")}></h1>
       <p class="text-sm md:text-base tracking-widest uppercase text-zinc-300 mt-4">
-        {locale === "el" ? "Πάτρα · Από το 1975" : "Patras · Since 1975"}
+        {t(locale, "home", "heroSubtitle")}
       </p>
     </div>
   </div>

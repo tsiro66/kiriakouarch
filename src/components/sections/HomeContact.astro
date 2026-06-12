@@ -31,7 +31,7 @@ const contactLink = locale === "el" ? "/contact" : "/en/contact";
     </div>
 
     <a href={contactLink} class="inline-block border border-white px-8 py-4 text-sm tracking-widest uppercase hover:bg-white hover:text-zinc-900 transition-colors">
-      {locale === "el" ? "Επικοινωνία" : "Get in touch"}
+      {t(locale, "home", "contactCta")}
     </a>
   </div>
 </section>

@@ -6,7 +6,7 @@ import { t } from "../i18n";
 <MainLayout title="404 | Kiriakouarch" description={t("el", "nav", "404MetaDescription")} lang="el" noindex={true}>
   <section class="flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
     <h1 class="text-8xl font-bold text-zinc-900">404</h1>
-    <p class="mt-4 text-xl text-zinc-600">Η σελίδα δεν βρέθηκε</p>
-    <a href="/" class="mt-8 text-zinc-900 underline underline-offset-4 hover:text-zinc-600">Αρχική σελίδα</a>
+    <p class="mt-4 text-xl text-zinc-600">{t("el", "notFound", "message")}</p>
+    <a href="/" class="mt-8 text-zinc-900 underline underline-offset-4 hover:text-zinc-600">{t("el", "notFound", "homeLink")}</a>
   </section>
 </MainLayout>

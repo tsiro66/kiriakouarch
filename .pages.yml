@@ -84,20 +84,34 @@ content:
     type: file
     path: src/i18n/en/home.json
     fields:
-      - { name: heroTitle,  label: "Hero Title",  type: string }
-      - { name: heroAlt,    label: "Hero Image Alt Text", type: string }
-      - { name: introTitle, label: "Intro Title", type: string }
-      - { name: introText,  label: "Intro Text",  type: text }
+      - { name: heroTitle,        label: "Hero Title",          type: string }
+      - { name: heroAlt,          label: "Hero Image Alt Text", type: string }
+      - { name: heroSubtitle,     label: "Hero Subtitle",      type: string }
+      - { name: introTitle,       label: "Intro Title",        type: string }
+      - { name: introSubtitle,    label: "Intro Subtitle",     type: string }
+      - { name: introText,        label: "Intro Text",         type: text }
+      - { name: projectsTitle,    label: "Projects Section Title", type: string }
+      - { name: allProjects,      label: "All Projects Link",  type: string }
+      - { name: learnMoreServices,label: "Services Learn More", type: string }
+      - { name: learnMoreAbout,   label: "About Learn More",   type: string }
+      - { name: contactCta,       label: "Contact CTA",        type: string }
 
   - name: home-el
     label: "Home (EL)"
     type: file
     path: src/i18n/el/home.json
     fields:
-      - { name: heroTitle,  label: "Hero Title",  type: string }
-      - { name: heroAlt,    label: "Hero Image Alt Text", type: string }
-      - { name: introTitle, label: "Intro Title", type: string }
-      - { name: introText,  label: "Intro Text",  type: text }
+      - { name: heroTitle,        label: "Hero Title",          type: string }
+      - { name: heroAlt,          label: "Hero Image Alt Text", type: string }
+      - { name: heroSubtitle,     label: "Hero Subtitle",      type: string }
+      - { name: introTitle,       label: "Intro Title",        type: string }
+      - { name: introSubtitle,    label: "Intro Subtitle",     type: string }
+      - { name: introText,        label: "Intro Text",         type: text }
+      - { name: projectsTitle,    label: "Projects Section Title", type: string }
+      - { name: allProjects,      label: "All Projects Link",  type: string }
+      - { name: learnMoreServices,label: "Services Learn More", type: string }
+      - { name: learnMoreAbout,   label: "About Learn More",   type: string }
+      - { name: contactCta,       label: "Contact CTA",        type: string }
 
   # ── About ─────────────────────────────────────────────────────────────────
   - name: about-en
@@ -105,26 +119,50 @@ content:
     type: file
     path: src/i18n/en/about.json
     fields:
-      - { name: title,           label: Title,           type: string }
-      - { name: intro,           label: Intro,           type: text }
-      - { name: philosophyTitle, label: "Person 1 Name", type: string }
-      - { name: philosophyText,  label: "Person 1 Bio",  type: text }
-      - { name: experienceTitle, label: "Person 2 Name", type: string }
-      - { name: experienceText,  label: "Person 2 Bio",  type: text }
-      - { name: ctaText,         label: "CTA Text",      type: string }
+      - { name: title,             label: Title,                type: string }
+      - { name: heroAlt,           label: "Hero Image Alt",    type: string }
+      - { name: intro,             label: Intro,               type: text }
+      - { name: teamTitle,         label: "Team Title",        type: string }
+      - { name: philosophyTitle,   label: "Person 1 Name",     type: string }
+      - { name: philosophyRole,    label: "Person 1 Role",     type: string }
+      - { name: philosophyText,    label: "Person 1 Bio",      type: text }
+      - { name: experienceTitle,   label: "Person 2 Name",     type: string }
+      - { name: experienceRole,    label: "Person 2 Role",     type: string }
+      - { name: experienceText,    label: "Person 2 Bio",      type: text }
+      - { name: milestonesTitle,   label: "Milestones Title",  type: string }
+      - name: milestones
+        label: Milestones
+        type: object
+        list: true
+        fields:
+          - { name: year, label: Year, type: string }
+          - { name: text, label: Text, type: text }
+      - { name: ctaText,           label: "CTA Text",          type: string }
 
   - name: about-el
     label: "About (EL)"
     type: file
     path: src/i18n/el/about.json
     fields:
-      - { name: title,           label: Title,           type: string }
-      - { name: intro,           label: Intro,           type: text }
-      - { name: philosophyTitle, label: "Person 1 Name", type: string }
-      - { name: philosophyText,  label: "Person 1 Bio",  type: text }
-      - { name: experienceTitle, label: "Person 2 Name", type: string }
-      - { name: experienceText,  label: "Person 2 Bio",  type: text }
-      - { name: ctaText,         label: "CTA Text",      type: string }
+      - { name: title,             label: Title,                type: string }
+      - { name: heroAlt,           label: "Hero Image Alt",    type: string }
+      - { name: intro,             label: Intro,               type: text }
+      - { name: teamTitle,         label: "Team Title",        type: string }
+      - { name: philosophyTitle,   label: "Person 1 Name",     type: string }
+      - { name: philosophyRole,    label: "Person 1 Role",     type: string }
+      - { name: philosophyText,    label: "Person 1 Bio",      type: text }
+      - { name: experienceTitle,   label: "Person 2 Name",     type: string }
+      - { name: experienceRole,    label: "Person 2 Role",     type: string }
+      - { name: experienceText,    label: "Person 2 Bio",      type: text }
+      - { name: milestonesTitle,   label: "Milestones Title",  type: string }
+      - name: milestones
+        label: Milestones
+        type: object
+        list: true
+        fields:
+          - { name: year, label: Year, type: string }
+          - { name: text, label: Text, type: text }
+      - { name: ctaText,           label: "CTA Text",          type: string }
 
   # ── Services ──────────────────────────────────────────────────────────────
   - name: services-en
@@ -141,6 +179,8 @@ content:
         fields:
           - { name: name,        label: Name,        type: string }
           - { name: description, label: Description, type: text }
+      - { name: ctaText,   label: "CTA Text",   type: text }
+      - { name: ctaButton, label: "CTA Button", type: string }
 
   - name: services-el
     label: "Services (EL)"
@@ -156,6 +196,27 @@ content:
         fields:
           - { name: name,        label: Name,        type: string }
           - { name: description, label: Description, type: text }
+      - { name: ctaText,   label: "CTA Text",   type: text }
+      - { name: ctaButton, label: "CTA Button", type: string }
+
+  # ── Projects Page ─────────────────────────────────────────────────────────
+  - name: projects-page-en
+    label: "Projects Page (EN)"
+    type: file
+    path: src/i18n/en/projects.json
+    fields:
+      - { name: title,     label: Title,              type: string }
+      - { name: filterAll, label: "Filter All Label", type: string }
+      - { name: backToAll, label: "Back To All Link", type: string }
+
+  - name: projects-page-el
+    label: "Projects Page (EL)"
+    type: file
+    path: src/i18n/el/projects.json
+    fields:
+      - { name: title,     label: Title,              type: string }
+      - { name: filterAll, label: "Filter All Label", type: string }
+      - { name: backToAll, label: "Back To All Link", type: string }
 
   # ── Contact ───────────────────────────────────────────────────────────────
   - name: contact-en
@@ -163,10 +224,10 @@ content:
     type: file
     path: src/i18n/en/contact.json
     fields:
-      - { name: title,        label: Title,          type: string }
-      - { name: intro,        label: Intro,          type: text }
-      - { name: addressLabel, label: "Address Label", type: string }
-      - { name: address,      label: Address,         type: string }
+      - { name: title,        label: Title,           type: string }
+      - { name: intro,        label: Intro,           type: text }
+      - { name: addressLabel, label: "Address Label",  type: string }
+      - { name: address,      label: Address,          type: string }
       - { name: phoneLabel,   label: "Phone Label",   type: string }
       - { name: phone,        label: Phone,           type: string }
       - { name: emailLabel,   label: "Email Label",   type: string }
@@ -179,16 +240,33 @@ content:
     type: file
     path: src/i18n/el/contact.json
     fields:
-      - { name: title,        label: Title,          type: string }
-      - { name: intro,        label: Intro,          type: text }
-      - { name: addressLabel, label: "Address Label", type: string }
-      - { name: address,      label: Address,         type: string }
+      - { name: title,        label: Title,           type: string }
+      - { name: intro,        label: Intro,           type: text }
+      - { name: addressLabel, label: "Address Label",  type: string }
+      - { name: address,      label: Address,          type: string }
       - { name: phoneLabel,   label: "Phone Label",   type: string }
       - { name: phone,        label: Phone,           type: string }
       - { name: emailLabel,   label: "Email Label",   type: string }
       - { name: email,        label: Email,           type: string }
       - { name: hoursLabel,   label: "Hours Label",   type: string }
       - { name: hours,        label: Hours,           type: string }
+
+  # ── 404 ────────────────────────────────────────────────────────────────────
+  - name: notfound-en
+    label: "404 Page (EN)"
+    type: file
+    path: src/i18n/en/notfound.json
+    fields:
+      - { name: message,  label: Message,   type: string }
+      - { name: homeLink, label: "Home Link", type: string }
+
+  - name: notfound-el
+    label: "404 Page (EL)"
+    type: file
+    path: src/i18n/el/notfound.json
+    fields:
+      - { name: message,  label: Message,   type: string }
+      - { name: homeLink, label: "Home Link", type: string }
 
   # ── Footer ────────────────────────────────────────────────────────────────
   - name: footer-en

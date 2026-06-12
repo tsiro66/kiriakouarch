@@ -16,7 +16,7 @@ const servicesLink = locale === "el" ? "/services" : "/en/services";
         {t(locale, "services", "title")}
       </h2>
       <a href={servicesLink} class="text-sm tracking-widest uppercase text-zinc-400 hover:text-white hover:underline transition-colors">
-        {locale === "el" ? "Περισσότερα" : "Learn more"} &rarr;
+        {t(locale, "home", "learnMoreServices")} &rarr;
       </a>
     </div>
 

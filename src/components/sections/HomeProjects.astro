@@ -13,10 +13,10 @@ const allLink = locale === "el" ? "/projects" : "/en/projects";
   <div class="max-w-7xl mx-auto">
     <div class="flex items-end justify-between mb-16">
       <h2 class="text-3xl md:text-4xl font-bold text-zinc-900">
-        {locale === "el" ? "Έργα" : "Projects"}
+        {t(locale, "home", "projectsTitle")}
       </h2>
       <a href={allLink} class="text-sm tracking-widest uppercase text-zinc-600 hover:text-zinc-900 hover:underline transition-colors">
-        {locale === "el" ? "Όλα τα έργα" : "All projects"} &rarr;
+        {t(locale, "home", "allProjects")} &rarr;
       </a>
     </div>
 

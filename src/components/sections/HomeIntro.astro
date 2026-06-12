@@ -8,7 +8,7 @@ const locale = getLocaleFromUrl(Astro.url);
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
     <div>
       <span class="text-sm tracking-widest uppercase text-zinc-500">
-        {locale === "el" ? "Πάτρα · Από το 1975" : "Patras · Since 1975"}
+        {t(locale, "home", "introSubtitle")}
       </span>
       <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 mt-3 leading-tight">
         {t(locale, "home", "introTitle")}
