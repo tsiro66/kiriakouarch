@@ -6,10 +6,12 @@ const prefix = locale === "el" ? "" : `/${locale}`;
 const otherLocale = locale === "el" ? "en" : "el";
 const otherPrefix = otherLocale === "el" ? "" : `/${otherLocale}`;
 const currentPath = Astro.url.pathname.replace(/^\/(en|el)/, "");
+const is404 = /^\/404/.test(currentPath);
 
-const pathSegment = currentPath.replace(/^\//, "").split("/")[0] || "home";
+const pathSegment = is404 ? "home" : (currentPath.replace(/^\//, "").split("/")[0] || "home");
 const pageKey = ["about", "projects", "services", "contact"].includes(pathSegment) ? pathSegment : "home";
 const pageTitle = t(locale, "nav", pageKey);
+const localeSwitchPath = is404 ? "/" : currentPath;
 ---
 
 <nav id="site-nav" aria-label={t(locale, "nav", "menu")} class="fixed top-0 left-0 w-full z-50 mix-blend-difference">
@@ -17,11 +19,11 @@ const pageTitle = t(locale, "nav", pageKey);
     
     <div class="flex gap-2 text-sm tracking-widest" role="group" aria-label="Language">
       <span class={locale === "el" ? "font-bold text-white" : "text-white/50"}>
-        {locale === "el" ? <span aria-current="true" class="inline-flex items-center min-h-12 px-1 font-bold text-white">GR</span> : <a href={`${otherPrefix}${currentPath}`} hreflang="el" class="inline-flex items-center min-h-12 px-1 hover:text-white/80">GR</a>}
+        {locale === "el" ? <span aria-current="true" class="inline-flex items-center min-h-12 px-1 font-bold text-white">GR</span> : <a href={`${otherPrefix}${localeSwitchPath}`} hreflang="el" class="inline-flex items-center min-h-12 px-1 hover:text-white/80">GR</a>}
       </span>
       <span class="text-white/30 inline-flex items-center" aria-hidden="true">|</span>
       <span class={locale === "en" ? "font-bold text-white" : "text-white/50"}>
-        {locale === "en" ? <span aria-current="true" class="inline-flex items-center min-h-12 px-1 font-bold text-white">EN</span> : <a href={`${otherPrefix}${currentPath}`} hreflang="en" class="inline-flex items-center min-h-12 px-1 hover:text-white/80">EN</a>}
+        {locale === "en" ? <span aria-current="true" class="inline-flex items-center min-h-12 px-1 font-bold text-white">EN</span> : <a href={`${otherPrefix}${localeSwitchPath}`} hreflang="en" class="inline-flex items-center min-h-12 px-1 hover:text-white/80">EN</a>}
       </span>
     </div>
 

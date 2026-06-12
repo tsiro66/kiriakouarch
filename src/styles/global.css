@@ -38,3 +38,8 @@ body {
 .dark *:focus-visible {
   outline-color: white;
 }
+
+img {
+  color: transparent;
+  font-size: 0;
+}

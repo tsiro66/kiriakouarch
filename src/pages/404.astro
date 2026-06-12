@@ -1,12 +1,117 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import { t } from "../i18n";
+
+const el = {
+  notFound: t("el", "notFound", "message"),
+  homeLink: t("el", "notFound", "homeLink"),
+  navHome: t("el", "nav", "home"),
+  navAbout: t("el", "nav", "about"),
+  navProjects: t("el", "nav", "projects"),
+  navServices: t("el", "nav", "services"),
+  navContact: t("el", "nav", "contact"),
+  navMenu: t("el", "nav", "menu"),
+  footerAddressLabel: t("el", "footer", "addressLabel"),
+  footerAddress: t("el", "footer", "address"),
+  footerPhoneLabel: t("el", "footer", "phoneLabel"),
+  footerPhone: t("el", "footer", "phone"),
+  footerEmailLabel: t("el", "footer", "emailLabel"),
+  footerEmail: t("el", "footer", "email"),
+  footerRights: t("el", "footer", "rights"),
+};
+
+const en = {
+  notFound: t("en", "notFound", "message"),
+  homeLink: t("en", "notFound", "homeLink"),
+  navHome: t("en", "nav", "home"),
+  navAbout: t("en", "nav", "about"),
+  navProjects: t("en", "nav", "projects"),
+  navServices: t("en", "nav", "services"),
+  navContact: t("en", "nav", "contact"),
+  navMenu: t("en", "nav", "menu"),
+  footerAddressLabel: t("en", "footer", "addressLabel"),
+  footerAddress: t("en", "footer", "address"),
+  footerPhoneLabel: t("en", "footer", "phoneLabel"),
+  footerPhone: t("en", "footer", "phone"),
+  footerEmailLabel: t("en", "footer", "emailLabel"),
+  footerEmail: t("en", "footer", "email"),
+  footerRights: t("en", "footer", "rights"),
+};
 ---
 
-<MainLayout title="404 | Kiriakouarch" description={t("el", "nav", "404MetaDescription")} lang="el" noindex={true}>
+<MainLayout title="404 | Kiriakouarch" description="Page not found" lang="el" noindex={true}>
   <section class="flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
     <h1 class="text-8xl font-bold text-zinc-900">404</h1>
-    <p class="mt-4 text-xl text-zinc-600">{t("el", "notFound", "message")}</p>
-    <a href="/" class="mt-8 text-zinc-900 underline underline-offset-4 hover:text-zinc-600">{t("el", "notFound", "homeLink")}</a>
+    <p id="notfound-message" class="mt-4 text-xl text-zinc-600">{el.notFound}</p>
+    <a id="notfound-home" href="/" class="mt-8 text-zinc-900 underline underline-offset-4 hover:text-zinc-600">{el.homeLink}</a>
   </section>
 </MainLayout>
+
+<script define:vars={{ el, en }}>
+  const isEn = window.location.pathname.startsWith("/en");
+  const basePath = window.location.pathname.replace(/^\/en/, "") || "/";
+
+  document.querySelectorAll("a[data-astro-reload], a").forEach(a => {
+    a.setAttribute("data-astro-reload", "");
+  });
+
+  if (isEn) {
+    document.documentElement.setAttribute("lang", "en");
+
+    const msgEl = document.getElementById("notfound-message");
+    const homeEl = document.getElementById("notfound-home");
+    if (msgEl) msgEl.textContent = en.notFound;
+    if (homeEl) { homeEl.href = "/en/"; homeEl.textContent = en.homeLink; }
+
+    const nav = document.getElementById("site-nav");
+    if (nav) nav.setAttribute("aria-label", en.navMenu);
+    const menu = document.getElementById("mobile-menu");
+    if (menu) menu.setAttribute("aria-label", en.navMenu);
+
+    const toggle = document.getElementById("menu-toggle");
+    if (toggle) toggle.setAttribute("aria-label", en.navMenu);
+
+    const navLinks = document.querySelectorAll("#site-nav a[href^='/'], #mobile-menu a[href^='/']");
+    navLinks.forEach((a) => {
+      if (a.querySelector("img")) { a.href = "/en/"; return; }
+      let href = a.getAttribute("href") || "";
+      if (href === "/" || href === "/en/") { a.textContent = en.navHome; a.href = "/en/"; }
+      else if (href === "/about" || href === "/en/about") { a.textContent = en.navAbout; a.href = "/en/about"; }
+      else if (href === "/projects" || href === "/en/projects") { a.textContent = en.navProjects; a.href = "/en/projects"; }
+      else if (href === "/services" || href === "/en/services") { a.textContent = en.navServices; a.href = "/en/services"; }
+      else if (href === "/contact" || href === "/en/contact") { a.textContent = en.navContact; a.href = "/en/contact"; }
+    });
+
+    const grLink = document.querySelector('a[hreflang="el"]');
+    if (grLink) { grLink.href = basePath; }
+
+    const enLink = document.querySelector('a[hreflang="en"]');
+    if (enLink) {
+      const parent = enLink.parentElement;
+      const span = document.createElement("span");
+      span.setAttribute("aria-current", "true");
+      span.className = "inline-flex items-center min-h-12 px-1 font-bold text-white";
+      span.textContent = "EN";
+      parent.replaceChild(span, enLink);
+    }
+
+    const footer = document.getElementById("site-footer");
+    if (footer) {
+      const labels = footer.querySelectorAll("span.text-xs");
+      if (labels[0]) labels[0].textContent = en.footerAddressLabel;
+      if (labels[1]) labels[1].textContent = en.footerPhoneLabel;
+      if (labels[2]) labels[2].textContent = en.footerEmailLabel;
+
+      const values = footer.querySelectorAll("p.mt-1");
+      if (values[0]) values[0].textContent = en.footerAddress;
+      if (values[1]) values[1].innerHTML = `<a href="tel:+302610321146" class="hover:underline transition-colors text-zinc-600 hover:text-zinc-900">${en.footerPhone}</a>`;
+      if (values[2]) values[2].innerHTML = `<a href="mailto:${en.footerEmail}" class="hover:underline transition-colors text-zinc-600 hover:text-zinc-900">${en.footerEmail}</a>`;
+
+      const rights = footer.querySelector("span");
+      if (rights && rights.parentElement.classList.contains("border-t")) rights.innerHTML = `&copy; ${new Date().getFullYear()} Kiriakouarch. ${en.footerRights}.`;
+    }
+  } else {
+    const enLink = document.querySelector('a[hreflang="en"]');
+    if (enLink) { enLink.href = "/en" + basePath; }
+  }
+</script>
