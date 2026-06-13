@@ -1,19 +1,40 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import Hero from "../components/sections/Hero.astro";
-import HomeIntro from "../components/sections/HomeIntro.astro";
-import HomeProjects from "../components/sections/HomeProjects.astro";
-import HomeServices from "../components/sections/HomeServices.astro";
-import HomeAbout from "../components/sections/HomeAbout.astro";
-import HomeContact from "../components/sections/HomeContact.astro";
-import { t } from "../i18n";
+import { Font } from "astro:assets";
+
+const year = new Date().getFullYear();
 ---
 
-<MainLayout title="Αρχική | Kiriakouarch" description={t("el", "home", "metaDescription")} lang="el">
-  <Hero slot="hero" />
-  <HomeIntro />
-  <HomeProjects />
-  <HomeServices />
-  <HomeAbout />
-  <HomeContact />
-</MainLayout>
+<!doctype html>
+<html lang="el">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kiriakouarch | Κτηριωματική Μελέτη</title>
+    <meta name="description" content="Κτηριωματική Μελέτη - Kiriakouarch" />
+    <meta name="robots" content="noindex" />
+    <Font cssVariable="--font-roboto-mono" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style is:global>
+      @import "tailwindcss";
+
+      body {
+        font-family: var(--font-roboto-mono), monospace;
+      }
+    </style>
+  </head>
+  <body class="bg-zinc-50 min-h-screen flex flex-col items-center justify-center px-6 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold text-zinc-900 tracking-tight">
+      Kiriakouarch
+    </h1>
+    <p class="mt-6 text-lg md:text-xl text-zinc-500 max-w-md">
+      Ο νέος ιστότοπός μας είναι υπό κατασκευή.
+    </p>
+    <div class="mt-12 w-12 h-[2px] bg-zinc-300"></div>
+    <p class="mt-10 text-sm text-zinc-400">
+      Επικοινωνία: <a href="mailto:info@kiriakouarch.gr" class="text-zinc-600 hover:text-zinc-900 underline underline-offset-4 transition-colors">info@kiriakouarch.gr</a>
+    </p>
+    <footer class="mt-20 text-xs text-zinc-400">
+      &copy; {year} Kiriakouarch
+    </footer>
+  </body>
+</html>
