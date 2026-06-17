@@ -1,23 +1,22 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import MainLayout from "../../../layouts/MainLayout.astro";
-import { t } from "../../../i18n";
+import { t, localizeProject } from "../../../i18n";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects", ({ data }) => data.lang === "en");
+  const projects = await getCollection("projects");
   return projects.map((project) => ({
-    params: { slug: project.id.split("/")[1] },
+    params: { slug: project.id },
     props: { project },
   }));
 }
 
 const { project } = Astro.props;
-const { Content } = await render(project);
-const { title, description, thumbnail, tags, year, location } = project.data;
+const localized = localizeProject(project.data, "en");
 ---
 
-<MainLayout title={`${title} | Kiriakouarch`} description={description} lang="en">
+<MainLayout title={`${localized.title} | Kiriakouarch`} description={localized.description} lang="en">
   <article class="px-6 pt-12 md:pt-16 pb-24 md:pb-32 bg-zinc-50">
     <div class="max-w-7xl mx-auto">
       <a
@@ -29,8 +28,8 @@ const { title, description, thumbnail, tags, year, location } = project.data;
 
       <div class="bg-zinc-200">
         <Image
-          src={thumbnail}
-          alt={title}
+          src={localized.thumbnail}
+          alt={localized.title}
           class="w-full h-[50vh] md:h-[70vh] object-cover"
           widths={[640, 1024, 1440, 1920]}
           sizes="100vw"
@@ -38,21 +37,21 @@ const { title, description, thumbnail, tags, year, location } = project.data;
       </div>
 
       <div class="mt-8">
-        <h1 class="text-2xl md:text-3xl font-bold text-zinc-900">{title}</h1>
-        <p class="text-base text-zinc-600 mt-2">{description}</p>
+        <h1 class="text-2xl md:text-3xl font-bold text-zinc-900">{localized.title}</h1>
+        <p class="text-base text-zinc-600 mt-2">{localized.description}</p>
 
         {
-          (location || year) && (
+          (localized.location || localized.year) && (
             <p class="text-sm text-zinc-500 mt-3">
-              {[location, year].filter(Boolean).join(" · ")}
+              {[localized.location, localized.year].filter(Boolean).join(" · ")}
             </p>
           )
         }
 
         {
-          tags && tags.length > 0 && (
+          localized.tags && localized.tags.length > 0 && (
             <div class="flex flex-wrap gap-2 mt-4">
-              {tags.map((tag) => (
+              {localized.tags.map((tag) => (
                 <span class="text-xs px-3 py-1 bg-zinc-200 text-zinc-700 rounded-full">
                   {tag}
                 </span>
@@ -62,7 +61,7 @@ const { title, description, thumbnail, tags, year, location } = project.data;
         }
 
         <div class="prose prose-zinc mt-12 max-w-3xl">
-          <Content />
+          <p>{localized.body}</p>
         </div>
       </div>
     </div>

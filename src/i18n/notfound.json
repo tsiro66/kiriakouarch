@@ -1,0 +1,10 @@
+{
+  "el": {
+    "message": "Η σελίδα δεν βρέθηκε",
+    "homeLink": "Αρχική σελίδα"
+  },
+  "en": {
+    "message": "Page not found",
+    "homeLink": "Home"
+  }
+}

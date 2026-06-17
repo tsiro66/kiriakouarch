@@ -1,14 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import { t, getLocaleFromUrl } from "../../i18n";
+import { t, getLocaleFromUrl, getSection } from "../../i18n";
 import heroImg from "../../assets/hero-img.jpg";
-
-import enAbout from "../../i18n/en/about.json";
-import elAbout from "../../i18n/el/about.json";
 
 const locale = getLocaleFromUrl(Astro.url);
 const ctaLink = locale === "el" ? "/projects" : "/en/projects";
-const milestones = locale === "el" ? elAbout.milestones : enAbout.milestones;
+const about = getSection(locale, "about");
+const milestones = about.milestones;
 ---
 
 <section class="px-6 pt-12 md:pt-16 pb-24 md:pb-32 bg-zinc-50 min-h-screen">

@@ -1,0 +1,22 @@
+{
+  "el": {
+    "home": "Αρχική σελίδα",
+    "about": "Ποιοι είμαστε",
+    "projects": "Τα έργα μας",
+    "services": "Υπηρεσίες",
+    "contact": "Επικοινωνία",
+    "menu": "Μενού",
+    "projectsMetaDescription": "Δείτε τα αρχιτεκτονικά έργα του γραφείου Κυριακού. Κατοικίες, πολυκατοικίες, επαγγελματικοί χώροι και ξενοδοχεία.",
+    "404MetaDescription": "Η σελίδα που ζητήσατε δεν βρέθηκε."
+  },
+  "en": {
+    "home": "Home",
+    "about": "About Us",
+    "projects": "Our Projects",
+    "services": "Services",
+    "contact": "Contact",
+    "menu": "Menu",
+    "projectsMetaDescription": "Browse the architectural projects of Kiriakou Studio. Residences, apartment buildings, commercial spaces and hotels.",
+    "404MetaDescription": "The page you requested was not found."
+  }
+}

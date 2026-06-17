@@ -1,0 +1,68 @@
+{
+  "el": {
+    "title": "Υπηρεσίες",
+    "intro": "Ολοκληρωμένες υπηρεσίες μελέτης, επίβλεψης και κατασκευής κτιριακών έργων.",
+    "items": [
+      {
+        "name": "Αρχιτεκτονικές Μελέτες",
+        "description": "Σχεδιασμός κατοικιών, πολυκατοικιών, επαγγελματικών χώρων και ξενοδοχείων."
+      },
+      {
+        "name": "Βιοκλιματική Αρχιτεκτονική & Ηλιακός Σχεδιασμός",
+        "description": "Εφαρμογές βιοκλιματικής αρχιτεκτονικής για ενεργειακή απόδοση και ποιότητα διαβίωσης."
+      },
+      {
+        "name": "Εσωτερική Διακόσμηση & Επίπλωση",
+        "description": "Μελέτες εσωτερικού χώρου με επιλογή υλικών, χρωμάτων και επίπλωσης."
+      },
+      {
+        "name": "Αρχιτεκτονική Τοπίου",
+        "description": "Σχεδιασμός và διαμόρφωση εξωτερικών χώρων."
+      },
+      {
+        "name": "Επίβλεψη Κατασκευής",
+        "description": "Συνεχής παρακολούθηση κάθε φάσης κατασκευής, σε συνεργασία με πολιτικούς μηχανικούς, ηλεκτρολόγους και τοπογράφους."
+      },
+      {
+        "name": "Στατικές & Τοπογραφικές Μελέτες",
+        "description": "Στατικές μελέτες, μελέτες ηλεκτρολογικών εγκαταστάσεων και τοπογραφικά."
+      }
+    ],
+    "ctaText": "Έχετε ένα έργο στο μυαλό σας; Ας το συζητήσουμε.",
+    "ctaButton": "Επικοινωνήστε μαζί μας",
+    "metaDescription": "Αρχιτεκτονικές μελέτες, βιοκλιματική αρχιτεκτονική, εσωτερική διακόσμηση, αρχιτεκτονική τοπίου, επίβλεψη κατασκευής, στατικές και τοπογραφικές μελέτες."
+  },
+  "en": {
+    "title": "Services",
+    "intro": "Comprehensive design, supervision and construction services for building projects.",
+    "items": [
+      {
+        "name": "Architectural Design",
+        "description": "Design of residences, apartment buildings, commercial spaces and hotels."
+      },
+      {
+        "name": "Bioclimatic Architecture & Solar Design",
+        "description": "Bioclimatic architecture applications for energy efficiency and quality of living."
+      },
+      {
+        "name": "Interior Design & Furnishing",
+        "description": "Interior space studies with selection of materials, colours and furnishings."
+      },
+      {
+        "name": "Landscape Architecture",
+        "description": "Design and configuration of outdoor spaces."
+      },
+      {
+        "name": "Construction Supervision",
+        "description": "Continuous monitoring of every construction phase, in collaboration with civil, electrical and surveying engineers."
+      },
+      {
+        "name": "Structural & Topographic Studies",
+        "description": "Structural studies, electrical installation studies and surveying."
+      }
+    ],
+    "ctaText": "Have a project in mind? Let's talk about it.",
+    "ctaButton": "Get in touch",
+    "metaDescription": "Architectural design, bioclimatic architecture, interior design, landscape architecture, construction supervision, structural and topographic studies."
+  }
+}

@@ -9,16 +9,21 @@ const projects = defineCollection({
   }),
   schema: ({ image }) =>
     z.object({
-      title: z.string(),
-      lang: z.enum(["el", "en"]),
-      description: z.string(),
+      titleEl: z.string(),
+      titleEn: z.string(),
+      descriptionEl: z.string(),
+      descriptionEn: z.string(),
       thumbnail: image(),
       images: z.array(image()).optional(),
-      tags: z.array(z.string()).optional(),
+      tagsEl: z.array(z.string()).optional(),
+      tagsEn: z.array(z.string()).optional(),
       year: z.number().optional(),
-      location: z.string().optional(),
+      locationEl: z.string().optional(),
+      locationEn: z.string().optional(),
       featured: z.boolean().default(false),
       order: z.number().default(0),
+      bodyEl: z.string().optional(),
+      bodyEn: z.string().optional(),
     }),
 });
 

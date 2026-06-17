@@ -1,11 +1,9 @@
 ---
-import { t, getLocaleFromUrl } from "../../i18n";
+import { t, getLocaleFromUrl, getSection } from "../../i18n";
 
 const locale = getLocaleFromUrl(Astro.url);
-
-import enServices from "../../i18n/en/services.json";
-import elServices from "../../i18n/el/services.json";
-const items = locale === "el" ? elServices.items : enServices.items;
+const services = getSection(locale, "services");
+const items = services.items;
 const ctaLink = locale === "el" ? "/contact" : "/en/contact";
 ---
 

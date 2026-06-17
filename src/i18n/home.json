@@ -1,0 +1,30 @@
+{
+  "el": {
+    "heroTitle": "Κυριακού<br />Αρχιτεκτονική",
+    "heroAlt": "Αρχιτεκτονικό έργο γραφείου Κυριακού",
+    "heroSubtitle": "Πάτρα · Από το 1975",
+    "introTitle": "Αρχιτεκτονικό γραφείο στην Πάτρα από το 1975",
+    "introSubtitle": "Πάτρα · Από το 1975",
+    "introText": "Το γραφείο μελετών Γιάννη & Ελίνας Κυριακού ιδρύθηκε το 1975 στην Πάτρα. Αναλαμβάνουμε τη μελέτη, επίβλεψη και κατασκευή κτιριακών έργων — κατοικίες, πολυκατοικίες, επαγγελματικοί χώροι, ξενοδοχεία — με εφαρμογές βιοκλιματικής αρχιτεκτονικής και ηλιακού σχεδιασμού.",
+    "projectsTitle": "Έργα",
+    "allProjects": "Όλα τα έργα",
+    "learnMoreServices": "Περισσότερα",
+    "learnMoreAbout": "Περισσότερα",
+    "contactCta": "Επικοινωνία",
+    "metaDescription": "Αρχιτεκτονικό γραφείο Κυριακού στην Πάτρα. Μελέτη, επίβλεψη και κατασκευή κτιριακών έργων από το 1975. Κατοικίες, επαγγελματικοί χώροι, βιοκλιματική αρχιτεκτονική."
+  },
+  "en": {
+    "heroTitle": "Kiriakou<br />Architecture",
+    "heroAlt": "Architectural project by Kiriakou Studio",
+    "heroSubtitle": "Patras · Since 1975",
+    "introTitle": "Architecture studio in Patras since 1975",
+    "introSubtitle": "Patras · Since 1975",
+    "introText": "Giannis & Elina Kiriakou Architecture Studio, founded in Patras in 1975. We undertake the design, supervision and construction of buildings — residences, apartment buildings, commercial spaces, hotels — with applications in bioclimatic architecture and solar design.",
+    "projectsTitle": "Projects",
+    "allProjects": "All projects",
+    "learnMoreServices": "Learn more",
+    "learnMoreAbout": "Learn more",
+    "contactCta": "Get in touch",
+    "metaDescription": "Kiriakou Architecture Studio in Patras, Greece. Design, supervision and construction of buildings since 1975. Residences, commercial spaces, bioclimatic architecture."
+  }
+}
