@@ -14,6 +14,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const localized = localizeProject(project.data, "en");
+const gallery = [localized.thumbnail, ...(project.data.images || [])];
 ---
 
 <MainLayout title={`${localized.title} | Kiriakouarch`} description={localized.description} lang="en">
@@ -25,16 +26,6 @@ const localized = localizeProject(project.data, "en");
       >
         {t("en", "projects", "backToAll")}
       </a>
-
-      <div class="bg-zinc-200">
-        <Image
-          src={localized.thumbnail}
-          alt={localized.title}
-          class="w-full h-[50vh] md:h-[70vh] object-cover"
-          widths={[640, 1024, 1440, 1920]}
-          sizes="100vw"
-        />
-      </div>
 
       <div class="mt-8">
         <h1 class="text-2xl md:text-3xl font-bold text-zinc-900">{localized.title}</h1>
@@ -60,9 +51,27 @@ const localized = localizeProject(project.data, "en");
           )
         }
 
-        <div class="prose prose-zinc mt-12 max-w-3xl">
-          <p>{localized.body}</p>
-        </div>
+        {
+          localized.body && (
+            <div class="prose prose-zinc mt-12 max-w-3xl">
+              <p>{localized.body}</p>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="mt-16 flex flex-col gap-4">
+        {gallery.map((img) => (
+          <div class="bg-zinc-200">
+            <Image
+              src={img}
+              alt={localized.title}
+              class="w-full h-[50vh] md:h-[70vh] object-cover"
+              widths={[640, 1024, 1440, 1920]}
+              sizes="100vw"
+            />
+          </div>
+        ))}
       </div>
     </div>
   </article>
