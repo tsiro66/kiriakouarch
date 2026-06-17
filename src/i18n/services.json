@@ -17,7 +17,7 @@
       },
       {
         "name": "Αρχιτεκτονική Τοπίου",
-        "description": "Σχεδιασμός và διαμόρφωση εξωτερικών χώρων."
+        "description": "Σχεδιασμός και διαμόρφωση εξωτερικών χώρων."
       },
       {
         "name": "Επίβλεψη Κατασκευής",
@@ -29,8 +29,7 @@
       }
     ],
     "ctaText": "Έχετε ένα έργο στο μυαλό σας; Ας το συζητήσουμε.",
-    "ctaButton": "Επικοινωνήστε μαζί μας",
-    "metaDescription": "Αρχιτεκτονικές μελέτες, βιοκλιματική αρχιτεκτονική, εσωτερική διακόσμηση, αρχιτεκτονική τοπίου, επίβλεψη κατασκευής, στατικές και τοπογραφικές μελέτες."
+    "ctaButton": "Επικοινωνήστε μαζί μας"
   },
   "en": {
     "title": "Services",
@@ -62,7 +61,6 @@
       }
     ],
     "ctaText": "Have a project in mind? Let's talk about it.",
-    "ctaButton": "Get in touch",
-    "metaDescription": "Architectural design, bioclimatic architecture, interior design, landscape architecture, construction supervision, structural and topographic studies."
+    "ctaButton": "Get in touch"
   }
 }

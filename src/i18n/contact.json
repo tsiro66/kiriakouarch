@@ -6,11 +6,11 @@
     "address": "Κουμανιώτη 23, Πάτρα 262 22",
     "phoneLabel": "Τηλέφωνο",
     "phone": "2610321146",
+    "phoneIntl": "+302610321146",
     "emailLabel": "Email",
     "email": "info@kiriakouarch.gr",
     "hoursLabel": "Ώρες Λειτουργίας",
-    "hours": "Δευ–Παρ: 09:00–17:00",
-    "metaDescription": "Επικοινωνήστε με το αρχιτεκτονικό γραφείο Κυριακού. Κουμανιώτη 23, Πάτρα 262 22. Τηλ: 2610321146. Email: info@kiriakouarch.gr."
+    "hours": "Δευ–Παρ: 09:00–17:00"
   },
   "en": {
     "title": "Contact",
@@ -19,10 +19,10 @@
     "address": "Koumanioti 23, Patras 262 22",
     "phoneLabel": "Phone",
     "phone": "2610321146",
+    "phoneIntl": "+302610321146",
     "emailLabel": "Email",
     "email": "info@kiriakouarch.gr",
     "hoursLabel": "Working Hours",
-    "hours": "Mon–Fri: 09:00–17:00",
-    "metaDescription": "Contact Kiriakou Architecture Studio. Koumanioti 23, Patras 262 22. Phone: 2610321146. Email: info@kiriakouarch.gr."
+    "hours": "Mon–Fri: 09:00–17:00"
   }
 }

@@ -113,7 +113,6 @@ content:
           - { name: title,             label: Title,                type: string }
           - { name: heroAlt,           label: "Hero Image Alt",    type: string }
           - { name: intro,             label: Intro,               type: text }
-          - { name: teamTitle,         label: "Team Title",        type: string }
           - { name: philosophyTitle,   label: "Person 1 Name",     type: string }
           - { name: philosophyRole,    label: "Person 1 Role",     type: string }
           - { name: philosophyText,    label: "Person 1 Bio",      type: text }
@@ -136,10 +135,9 @@ content:
           - { name: title,             label: Title,                type: string }
           - { name: heroAlt,           label: "Hero Image Alt",    type: string }
           - { name: intro,             label: Intro,               type: text }
-          - { name: teamTitle,         label: "Team Title",        type: string }
           - { name: philosophyTitle,   label: "Person 1 Name",     type: string }
-          - { name: philosophyRole,    label: "Person 1 Role",     type: string }
-          - { name: philosophyText,    label: "Person 1 Bio",      type: text }
+          - { name: philosophyRole,    label: "Person 2 Role",     type: string }
+          - { name: philosophyText,    label: "Person 2 Bio",      type: text }
           - { name: experienceTitle,   label: "Person 2 Name",     type: string }
           - { name: experienceRole,    label: "Person 2 Role",     type: string }
           - { name: experienceText,    label: "Person 2 Bio",      type: text }
@@ -206,19 +204,20 @@ content:
       - name: en
         label: "English"
         type: object
-        fields:
-          - { name: title,     label: Title,              type: string }
-          - { name: filterAll, label: "Filter All Label", type: string }
-          - { name: backToAll, label: "Back To All Link", type: string }
-
-  # ── Contact ───────────────────────────────────────────────────────────────
-  - name: contact
-    label: "Contact"
-    type: file
-    path: src/i18n/contact.json
-    fields:
-      - name: el
-        label: "Ελληνικά"
+fields:
+          - { name: title,        label: Title,           type: string }
+          - { name: intro,        label: Intro,           type: text }
+          - { name: addressLabel, label: "Address Label",  type: string }
+          - { name: address,      label: Address,          type: string }
+          - { name: phoneLabel,   label: "Phone Label",   type: string }
+          - { name: phone,        label: Phone,            type: string }
+          - { name: phoneIntl,    label: "Phone (International)", type: string }
+          - { name: emailLabel,   label: "Email Label",    type: string }
+          - { name: email,        label: Email,           type: string }
+          - { name: hoursLabel,   label: "Hours Label",   type: string }
+          - { name: hours,        label: Hours,            type: string }
+      - name: en
+        label: "English"
         type: object
         fields:
           - { name: title,        label: Title,           type: string }
@@ -227,7 +226,8 @@ content:
           - { name: address,      label: Address,          type: string }
           - { name: phoneLabel,   label: "Phone Label",   type: string }
           - { name: phone,        label: Phone,            type: string }
-          - { name: emailLabel,   label: "Email Label",   type: string }
+          - { name: phoneIntl,    label: "Phone (International)", type: string }
+          - { name: emailLabel,   label: "Email Label",    type: string }
           - { name: email,        label: Email,           type: string }
           - { name: hoursLabel,   label: "Hours Label",   type: string }
           - { name: hours,        label: Hours,            type: string }
@@ -280,6 +280,7 @@ content:
           - { name: address,      label: Address,          type: string }
           - { name: phoneLabel,   label: "Phone Label",    type: string }
           - { name: phone,        label: Phone,            type: string }
+          - { name: phoneIntl,    label: "Phone (International)", type: string }
           - { name: emailLabel,   label: "Email Label",    type: string }
           - { name: email,        label: Email,            type: string }
       - name: en
@@ -291,5 +292,6 @@ content:
           - { name: address,      label: Address,          type: string }
           - { name: phoneLabel,   label: "Phone Label",    type: string }
           - { name: phone,        label: Phone,            type: string }
+          - { name: phoneIntl,    label: "Phone (International)", type: string }
           - { name: emailLabel,   label: "Email Label",    type: string }
           - { name: email,        label: Email,            type: string }

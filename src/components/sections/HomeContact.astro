@@ -19,7 +19,7 @@ const contactLink = locale === "el" ? "/contact" : "/en/contact";
       <div>
         <span class="text-xs tracking-widest uppercase text-zinc-400">{t(locale, "contact", "phoneLabel")}</span>
         <p class="text-base mt-1">
-          <a href="tel:+302610321146" class="text-zinc-300 hover:text-white hover:underline transition-colors">{t(locale, "contact", "phone")}</a>
+          <a href={`tel:${t(locale, "contact", "phoneIntl")}`} class="text-zinc-300 hover:text-white hover:underline transition-colors">{t(locale, "contact", "phone")}</a>
         </p>
       </div>
       <div>

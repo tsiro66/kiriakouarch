@@ -15,6 +15,7 @@ const el = {
   footerAddress: t("el", "footer", "address"),
   footerPhoneLabel: t("el", "footer", "phoneLabel"),
   footerPhone: t("el", "footer", "phone"),
+  footerPhoneIntl: t("el", "footer", "phoneIntl"),
   footerEmailLabel: t("el", "footer", "emailLabel"),
   footerEmail: t("el", "footer", "email"),
   footerRights: t("el", "footer", "rights"),
@@ -33,13 +34,14 @@ const en = {
   footerAddress: t("en", "footer", "address"),
   footerPhoneLabel: t("en", "footer", "phoneLabel"),
   footerPhone: t("en", "footer", "phone"),
+  footerPhoneIntl: t("en", "footer", "phoneIntl"),
   footerEmailLabel: t("en", "footer", "emailLabel"),
   footerEmail: t("en", "footer", "email"),
   footerRights: t("en", "footer", "rights"),
 };
 ---
 
-<MainLayout title="404 | Kiriakouarch" description="Page not found" lang="el" noindex={true}>
+<MainLayout title="404 | Kiriakouarch" description="Η σελίδα που ζητήσατε δεν βρέθηκε." lang="el" noindex={true}>
   <section class="flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
     <h1 class="text-8xl font-bold text-zinc-900">404</h1>
     <p id="notfound-message" class="mt-4 text-xl text-zinc-600">{el.notFound}</p>
@@ -104,7 +106,7 @@ const en = {
 
       const values = footer.querySelectorAll("p.mt-1");
       if (values[0]) values[0].textContent = en.footerAddress;
-      if (values[1]) values[1].innerHTML = `<a href="tel:+302610321146" class="hover:underline transition-colors text-zinc-600 hover:text-zinc-900">${en.footerPhone}</a>`;
+      if (values[1]) values[1].innerHTML = `<a href="tel:${en.footerPhoneIntl}" class="hover:underline transition-colors text-zinc-600 hover:text-zinc-900">${en.footerPhone}</a>`;
       if (values[2]) values[2].innerHTML = `<a href="mailto:${en.footerEmail}" class="hover:underline transition-colors text-zinc-600 hover:text-zinc-900">${en.footerEmail}</a>`;
 
       const rights = footer.querySelector("span");

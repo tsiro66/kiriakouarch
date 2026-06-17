@@ -10,8 +10,7 @@
     "allProjects": "Όλα τα έργα",
     "learnMoreServices": "Περισσότερα",
     "learnMoreAbout": "Περισσότερα",
-    "contactCta": "Επικοινωνία",
-    "metaDescription": "Αρχιτεκτονικό γραφείο Κυριακού στην Πάτρα. Μελέτη, επίβλεψη και κατασκευή κτιριακών έργων από το 1975. Κατοικίες, επαγγελματικοί χώροι, βιοκλιματική αρχιτεκτονική."
+    "contactCta": "Επικοινωνία"
   },
   "en": {
     "heroTitle": "Kiriakou<br />Architecture",
@@ -24,7 +23,6 @@
     "allProjects": "All projects",
     "learnMoreServices": "Learn more",
     "learnMoreAbout": "Learn more",
-    "contactCta": "Get in touch",
-    "metaDescription": "Kiriakou Architecture Studio in Patras, Greece. Design, supervision and construction of buildings since 1975. Residences, commercial spaces, bioclimatic architecture."
+    "contactCta": "Get in touch"
   }
 }

@@ -22,7 +22,7 @@ const locale = getLocaleFromUrl(Astro.url);
         <div>
           <span class="text-sm text-zinc-500">{t(locale, "contact", "phoneLabel")}</span>
           <p class="text-base mt-1">
-            <a href="tel:+302610321146" class="text-zinc-900 hover:underline">{t(locale, "contact", "phone")}</a>
+            <a href={`tel:${t(locale, "contact", "phoneIntl")}`} class="text-zinc-900 hover:underline">{t(locale, "contact", "phone")}</a>
           </p>
         </div>
         <div>
